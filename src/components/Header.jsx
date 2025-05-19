@@ -1,23 +1,53 @@
 import React from "react";
-import '../index.css'
-import { motion } from "motion/react"
+import "../index.css";
+import { motion } from "motion/react";
 import { NavLink } from "react-router";
-import logoImg from '../assets/logo.png'
+import logoImg from "../assets/logo.png";
 
+const MotionNavLink = motion.create(NavLink);
 const Header = () => {
   const links = (
     <>
       <li className="text-white">
-        <NavLink  to='/' className={({isActive})=>isActive ? "btn btn-info rounded-4xl border-none":""}>Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "btn btn-info rounded-4xl border-none" : ""
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li className="text-white">
-        <NavLink to='/shareTip' className={({isActive})=>isActive ? "btn btn-info rounded-4xl border-none":""}>Share a Garden Tip</NavLink>
+        <NavLink
+          to="/shareTip"
+          className={({ isActive }) =>
+            isActive ? "btn btn-info rounded-4xl border-none" : ""
+          }
+        >
+          Share a Garden Tip
+        </NavLink>
       </li>
       <li className="text-white">
-        <NavLink to='/exploreGarden' className={({isActive})=>isActive ? "btn btn-info rounded-4xl border-none":""}> Explore Gardeners</NavLink>
+        <NavLink
+          to="/exploreGarden"
+          className={({ isActive }) =>
+            isActive ? "btn btn-info rounded-4xl border-none" : ""
+          }
+        >
+          {" "}
+          Explore Gardeners
+        </NavLink>
       </li>
       <li className="text-white">
-        <NavLink to="/myTip" className={({isActive})=>isActive ? "btn btn-info rounded-4xl border-none":""}>My Tips</NavLink>
+        <NavLink
+          to="/myTip"
+          className={({ isActive }) =>
+            isActive ? "btn btn-info rounded-4xl border-none" : ""
+          }
+        >
+          My Tips
+        </NavLink>
       </li>
     </>
   );
@@ -52,21 +82,29 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-1">
             <img className="h-20" src={logoImg} alt="" />
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-green-200 to-green-500 bg-clip-text text-transparent">GreenNest</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-green-200 to-green-500 bg-clip-text text-transparent lg:block hidden">
+              GreenNest
+            </h1>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            {links}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          <motion.button
-          whileHover={{scale:1.1,textShadow:"opx opx 8px rgb(255,255,255)",boxShadow:"0px 0px 8px rgb(255,255,255)"}} 
-           className="px-5 text-white font-semibold py-2  border-3 border-white rounded-4xl">Sing In</motion.button>
-          <motion.button
-           whileHover={{scale:1.1,textShadow:"opx opx 8px rgb(255,255,255)",boxShadow:"0px 0px 8px rgb(255,255,255)"}} 
-           className="px-5 py-2 text-white  font-semibold border-3 border-white rounded-4xl">Sing Up</motion.button>
+          <NavLink
+            to="/signIn"
+            className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
+             transition transform hover:scale-110 hover:shadow-[0_0_5px_rgba(255,255,255,1)]"
+          >
+            Sing In
+          </NavLink>
+          <NavLink
+            to="/signUp"
+            className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
+             transition transform hover:scale-110 hover:shadow-[0_0_5px_rgba(255,255,255,1)]"
+          >
+            Sing Up
+          </NavLink>
         </div>
       </div>
     </div>
