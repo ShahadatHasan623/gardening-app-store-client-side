@@ -1,9 +1,29 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const SignUp = () => {
+    const {signUp}=use(AuthContext)
+    
+    const handleSignUp =e=>{
+        e.preventDefault()
+        const form=e.target;
+        const name =form.name.value;
+        const email =form.email.value;
+        const photo =form.photoUrl.value;
+        const password=form.password.value;
+        
+        signUp(email,password)
+        .then(result=>{
+            console.log(result.user)
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
+    }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-4xl p-12">
-      <form className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-transform  hover:shadow-3xl">
+      <form onSubmit={handleSignUp} className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-transform  hover:shadow-3xl">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
           Create Account
         </h2>
@@ -15,6 +35,7 @@ const SignUp = () => {
           <input
             id="name"
             type="text"
+            name="name"
             placeholder="Your full name"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition"
           />
@@ -27,6 +48,7 @@ const SignUp = () => {
           <input
             id="email"
             type="email"
+            name="email"
             placeholder="example@mail.com"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition"
           />
@@ -38,6 +60,7 @@ const SignUp = () => {
           <input
             id="photo"
             type="photo"
+            name="photoUrl"
             placeholder="Photo Url"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition"
           />
@@ -50,6 +73,7 @@ const SignUp = () => {
           <input
             id="password"
             type="password"
+            name="password"
             placeholder="********"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition"
           />
