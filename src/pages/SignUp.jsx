@@ -1,29 +1,66 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
-    const {signUp}=use(AuthContext)
-    
-    const handleSignUp =e=>{
-        e.preventDefault()
-        const form=e.target;
-        const name =form.name.value;
-        const email =form.email.value;
-        const photo =form.photoUrl.value;
-        const password=form.password.value;
-        
-        signUp(email,password)
-        .then(result=>{
-            console.log(result.user)
-        })
-        .catch(error=>{
-            console.log(error.message)
-        })
+  const { signUp, google, setUser, updateUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photoUrl.value;
+    const password = form.password.value;
+
+    if (password.length < 8) {
+      Swal.fire("❌ Password must be at least 8 characters long.");
+    } else if (!/[a-z]/.test(password)) {
+      Swal.fire("❌ Password must include at least one lowercase letter.");
+    } else if (!/[A-Z]/.test(password)) {
+      Swal.fire("❌ Password must include at least one uppercase letter.");
+    } else if (!/[@$!%*?&]/.test(password)) {
+      Swal.fire(
+        "❌ Password must include at least one special character (@$!%*?&)."
+      );
+    } else {
+      Swal.fire("✅ Password is strong.");
     }
+
+    signUp(email, password)
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          title: "SignUp Successfully!",
+          icon: "success",
+          draggable: true,
+        });
+        updateUser({ displayName: name, photoURL: photo }).then(() => {
+          setUser({ ...user, displayName: name, photoURL: photo});
+          navigate("/");
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  const handleGoogleSignUp = () => {
+    google()
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-4xl p-12">
-      <form onSubmit={handleSignUp} className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-transform  hover:shadow-3xl">
+      <form
+        onSubmit={handleSignUp}
+        className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-transform  hover:shadow-3xl"
+      >
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
           Create Account
         </h2>
@@ -67,7 +104,10 @@ const SignUp = () => {
         </div>
 
         <div className="mb-6">
-          <label className="block text-gray-700 mb-2 font-semibold" for="password">
+          <label
+            className="block text-gray-700 mb-2 font-semibold"
+            for="password"
+          >
             Password
           </label>
           <input
@@ -86,7 +126,10 @@ const SignUp = () => {
           Sign Up
         </button>
 
-        <button className="btn bg-white text-black border-[#e5e5e5] w-full mt-3">
+        <button
+          onClick={handleGoogleSignUp}
+          className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
+        >
           <svg
             aria-label="Google logo"
             width="16"

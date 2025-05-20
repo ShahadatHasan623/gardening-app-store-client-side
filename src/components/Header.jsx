@@ -1,11 +1,19 @@
-import React from "react";
+import React, { use, useState } from "react";
 import "../index.css";
 import { motion } from "motion/react";
 import { NavLink } from "react-router";
 import logoImg from "../assets/logo.png";
+import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const MotionNavLink = motion.create(NavLink);
 const Header = () => {
+  const { user, signout } = use(AuthContext);
+  const [open, setOpen] = useState(false);
+  const handleSignOut = () => {
+    signout();
+    toast.success("signout SuccessFully");
+  };
   const links = (
     <>
       <li className="text-white">
@@ -91,20 +99,53 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          <NavLink
-            to="/signIn"
-            className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
+          {user ? (
+            <div className="relative inline-block text-left">
+              <div onClick={() => setOpen(!open)} className="cursor-pointer">
+                <img
+                  className="w-12 h-12 rounded-full border-2 border-gray-300"
+                  src={user?.photoURL}
+                  alt="Profile"
+                />
+              </div>
+
+              {open && (
+                <div className="absolute right-0 mt-2 w-88  rounded-lg shadow-lg bg-white z-50">
+                  <div className="px-4 py-3 border-b flex flex-col items-center justify-center z-10">
+                    <p className="font-medium text-gray-800">
+                      {user.displayName}
+                    </p>
+                    <p className="text-sm text-gray-500">{user.email}</p>
+                  </div>
+                  <div className="p-2">
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full px-4 py-2 btn bg-gray-300 text-sm text-red-600 hover:bg-gray-100 rounded"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <NavLink
+                to="/signIn"
+                className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
              transition transform hover:scale-110 hover:shadow-[0_0_5px_rgba(255,255,255,1)]"
-          >
-            Sing In
-          </NavLink>
-          <NavLink
-            to="/signUp"
-            className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
+              >
+                Sing In
+              </NavLink>
+              <NavLink
+                to="/signUp"
+                className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
              transition transform hover:scale-110 hover:shadow-[0_0_5px_rgba(255,255,255,1)]"
-          >
-            Sing Up
-          </NavLink>
+              >
+                Sing Up
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
     </div>
