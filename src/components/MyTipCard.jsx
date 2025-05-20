@@ -16,7 +16,7 @@ const MyTipCard = ({ users, setUsers }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/garden/${id}`, {
+        fetch(`https://gardening-store-server.vercel.app/garden/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

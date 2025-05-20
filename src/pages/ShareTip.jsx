@@ -17,7 +17,7 @@ const ShareTip = () => {
       email,
       ...userData,
     };
-    fetch("http://localhost:3000/garden", {
+    fetch("https://gardening-store-server.vercel.app/garden", {
       method: "POST",
       headers: {
         "content-type": "application/json",

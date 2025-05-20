@@ -21,7 +21,7 @@ const Update = () => {
     const formdata = new FormData(form);
     const updateGarden = Object.fromEntries(formdata.entries());
     console.log(updateGarden);
-    fetch(`http://localhost:3000/garden/${_id}`, {
+    fetch(`https://gardening-store-server.vercel.app/garden/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
