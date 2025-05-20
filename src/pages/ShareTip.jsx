@@ -37,109 +37,168 @@ const ShareTip = () => {
       });
   };
   return (
-    <div className="max-w-6xl min-h-[calc(100vh-117px)] mx-auto py-8 ">
-      <div className="p-24 space-y-5 bg-gradient-to-r from-purple-400 to-green-500 mx-auto rounded-2xl">
-        <form onSubmit={handleShareTip} className="space-y-5">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
-              <label className="label">Title </label>
+    <div className="max-w-6xl min-h-[calc(100vh-117px)] mx-auto py-8">
+      <div className="p-10 bg-gradient-to-r from-purple-400 to-green-500 rounded-2xl shadow-xl">
+        <form onSubmit={handleShareTip} className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Title */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-1">Title</label>
               <input
                 type="text"
                 name="title"
-                className="input w-full"
-                placeholder="Title "
+                className="input input-bordered w-full"
+                placeholder="Enter title"
               />
             </fieldset>
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
-              <label className="label">Plant Type</label>
+
+            {/* Plant Type */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-1">
+                Plant Type
+              </label>
               <input
                 type="text"
-                className="input w-full"
-                name="Plant Type"
-                placeholder="Plant Type"
+                name="plantType"
+                className="input input-bordered w-full"
+                placeholder="Enter plant type"
               />
             </fieldset>
-            <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
-              <label className="label">Images</label>
+
+            {/* Image URL */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-1">
+                Image URL
+              </label>
               <input
                 type="text"
-                className="input w-full"
                 name="Images"
-                placeholder="Images Url"
+                className="input input-bordered w-full"
+                placeholder="Enter image URL"
               />
             </fieldset>
-            <fieldset className="bg-base-200 border-base-300 rounded-box border p-4">
-              <label className="label">Difficulty Level :</label>
-              <input className="mx-2" type="radio" name="level" value="easy" />
-              <label htmlFor="male">Easy</label>
 
-              <input
-                className="mx-2"
-                type="radio"
-                name="level"
-                value="medium"
-              />
-              <label htmlFor="male">Medium</label>
-
-              <input className="mx-2" type="radio" name="level" value="hard" />
-              <label htmlFor="male">Hard</label>
+            {/* Difficulty Level */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-2">
+                Difficulty Level
+              </label>
+              <div className="space-x-4">
+                <label>
+                  <input
+                    type="radio"
+                    name="level"
+                    value="easy"
+                    className="mr-1"
+                  />{" "}
+                  Easy
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="level"
+                    value="medium"
+                    className="mr-1"
+                  />{" "}
+                  Medium
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="level"
+                    value="hard"
+                    className="mr-1"
+                  />{" "}
+                  Hard
+                </label>
+              </div>
             </fieldset>
-            <fieldset className="bg-base-200 border-base-300 rounded-box border p-4">
-              <label className="label">Category :</label>
-              <input
-                className="mx-2"
-                type="radio"
-                name="category"
-                value="Composting"
-              />
-              <label htmlFor="male">Composting</label>
 
-              <input
-                className="mx-2"
-                type="radio"
-                name="category"
-                value="Plant Care"
-              />
-              <label htmlFor="male">Plant Care</label>
-
-              <input
-                className="mx-2"
-                type="radio"
-                name="category"
-                value="Vertical Gardening"
-              />
-              <label htmlFor="male">Vertical Gardening</label>
+            {/* Category */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-2">
+                Category
+              </label>
+              <div className="space-x-4">
+                <label>
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Composting"
+                    className="mr-1"
+                  />{" "}
+                  Composting
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Plant Care"
+                    className="mr-1"
+                  />{" "}
+                  Plant Care
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="category"
+                    value="Vertical Gardening"
+                    className="mr-1"
+                  />{" "}
+                  Vertical Gardening
+                </label>
+              </div>
             </fieldset>
-            <fieldset className="bg-base-200 border-base-300 rounded-box border p-4">
-              <label htmlFor="description">Description</label>
-              <br />
+
+            {/* Description */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
+              <label className="block text-sm font-semibold mb-1">
+                Description
+              </label>
               <textarea
                 name="description"
-                className="border-1 border-gray-400 rounded-xl w-full p-3"
-                id=""
                 rows="5"
+                className="textarea textarea-bordered w-full"
+                placeholder="Write your tip..."
               ></textarea>
             </fieldset>
-            <fieldset className="bg-base-200 border-base-300 rounded-box border p-4">
-              <label className="label">Availability :</label>
-              <input
-                className="mx-2"
-                type="radio"
-                name="availability"
-                value="public"
-              />
-              <label htmlFor="active">public</label>
 
-              <input
-                className="mx-2"
-                type="radio"
-                name="availability"
-                value="hidden"
-              />
-              <label htmlFor="Hidden">hidden</label>
+            {/* Availability */}
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-2">
+                Availability
+              </label>
+              <div className="space-x-4">
+                <label>
+                  <input
+                    type="radio"
+                    name="availability"
+                    value="public"
+                    className="mr-1"
+                  />{" "}
+                  Public
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="availability"
+                    value="hidden"
+                    className="mr-1"
+                  />{" "}
+                  Hidden
+                </label>
+              </div>
             </fieldset>
           </div>
-          <input type="submit" className="btn w-full" value="Add User" />
+
+          {/* Submit Button */}
+          <div>
+            <input
+              type="submit"
+              value="Add Tip"
+              className="btn btn-success w-full text-white text-lg"
+            />
+          </div>
         </form>
       </div>
     </div>
