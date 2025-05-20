@@ -1,11 +1,12 @@
 import React, { use } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 
 const SignIn = () => {
   const { signIn, google } = use(AuthContext);
   const navigate = useNavigate();
+  const location =useLocation()
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +23,7 @@ const SignIn = () => {
             timer: 1500,
           });
         }
-        navigate('/')
+        navigate(`${location.state ? location.state : '/'}`)
       })
       .catch((error) => {
         console.log(error.message);

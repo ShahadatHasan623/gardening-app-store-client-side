@@ -10,6 +10,7 @@ import SignUp from "../pages/SignUp";
 import BrowsTips from "../components/BrowsTips";
 import TipDetailsPage from "../pages/TipDetailsPage";
 import Update from "../pages/Update";
+import PrivateRoute from "../context/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/shareTip",
-        Component: ShareTip,
+        element:<PrivateRoute><ShareTip></ShareTip></PrivateRoute> ,
       },
       {
         path: "/browseTips",
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myTip",
-        Component: MyTip,
+        element:<PrivateRoute><MyTip></MyTip></PrivateRoute>,
         loader: () => fetch("http://localhost:3000/garden"),
         hydrateFallbackElement: (
           <div className="flex items-center justify-center">
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/tipDetails/:id",
-        Component: TipDetailsPage,
+        element: <PrivateRoute><TipDetailsPage></TipDetailsPage></PrivateRoute>,
         hydrateFallbackElement: (
           <div className="flex items-center justify-center">
             <span className="loading loading-bars loading-xl"></span>
@@ -78,7 +79,7 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </div>
         ),
-        Component: Update,
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
       },
     ],
   },
