@@ -1,11 +1,39 @@
 import React from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdJavascript } from "react-icons/md";
+import { data } from "react-router";
+import Swal from "sweetalert2";
 
 const MyTipCard = ({ users, setUsers }) => {
-  const handleDelete =(id)=>{
-    console.log(id)
-  }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/garden/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              const remaininguser = users.filter((userId) => userId._id !== id);
+              setUsers(remaininguser)
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="overflow-x-auto">
@@ -38,9 +66,19 @@ const MyTipCard = ({ users, setUsers }) => {
                 <td className="py-3 px-4">{user.plantType}</td>
                 <td className="py-3 px-4">
                   <div className="join flex items-center gap-2">
-                    <button className="btn join-item text-white bg-green-500"><FaEye /></button>
-                    <button className="btn join-item text-white bg-green-500"><FaEdit /></button>
-                    <button onClick={()=>handleDelete(user._id)} className="btn join-item text-white bg-green-500"> <MdDelete /> </button>
+                    <button className="btn join-item text-white bg-green-500">
+                      <FaEye />
+                    </button>
+                    <button className="btn join-item text-white bg-green-500">
+                      <FaEdit />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="btn join-item text-white bg-green-500"
+                    >
+                      {" "}
+                      <MdDelete />{" "}
+                    </button>
                   </div>
                 </td>
               </tr>
