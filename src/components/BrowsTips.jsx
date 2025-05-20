@@ -1,23 +1,34 @@
 import React from "react";
+import { Link, useLoaderData } from "react-router";
+import { FaEye } from "react-icons/fa";
 
 const BrowsTips = () => {
+  const browseData = useLoaderData();
+
   return (
-    <div class="overflow-x-auto min-h-[calc(100vh-117px)] py-8 max-w-6xl mx-auto">
-      <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+    <div className="overflow-x-auto min-h-[calc(100vh-117px)] py-8 max-w-6xl mx-auto">
+      <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
         <thead>
-          <tr class="bg-green-600 text-white text-left">
-            <th class="py-3 px-4">No</th>
-            <th class="py-3 px-4">image</th>
-            <th class="py-3 px-4">image</th>
-            <th class="py-3 px-4">Details</th>
+          <tr className="bg-green-600 text-white text-left">
+            <th className="py-3 px-4">No</th>
+            <th className="py-3 px-4">image</th>
+            <th className="py-3 px-4">title</th>
+            <th className="py-3 px-4">Details</th>
           </tr>
         </thead>
-        <tbody class="text-gray-700">
-          <tr class="hover:bg-green-50">
-            <td class="py-3 px-4">Rose</td>
-            <td class="py-3 px-4">Flowering Plant</td>
-            <td class="py-3 px-4">Decoration, Fragrance</td>
-          </tr>
+        <tbody className="text-gray-700">
+          {browseData.map((brows, index) => (
+            <tr key={brows._id} className="hover:bg-green-50">
+              <td className="py-3 px-4">{index + 1}</td>
+              <td className="py-3 px-4">
+                <img className="h-20 w-20" src={brows.Images} alt="" />
+              </td>
+              <td className="py-3 px-4">{brows.title}</td>
+              <td className="py-3 px-4">
+                <Link className="btn bg-green-500 text-white"><FaEye /></Link>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
