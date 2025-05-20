@@ -1,7 +1,6 @@
 import React from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete, MdJavascript } from "react-icons/md";
-import { data } from "react-router";
 import Swal from "sweetalert2";
 
 const MyTipCard = ({ users, setUsers }) => {
@@ -23,7 +22,7 @@ const MyTipCard = ({ users, setUsers }) => {
           .then((data) => {
             if (data.deletedCount) {
               const remaininguser = users.filter((userId) => userId._id !== id);
-              setUsers(remaininguser)
+              setUsers(remaininguser);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -35,49 +34,56 @@ const MyTipCard = ({ users, setUsers }) => {
     });
   };
   return (
-    <div>
-      <div className="overflow-x-auto">
-        <div className="text-center mb-8 space-y-2">
-          <h1 className="text-4xl font-bold">View Your Submitted Garden Tip</h1>
-          <p>
-            Here you can see all the details of your gardening tip including the
-            plant type, difficulty level, category, and availability. <br />{" "}
-            Edit or manage your tip to help other garden lovers grow better!
-          </p>
-        </div>
-        <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
-          <thead>
-            <tr className="bg-green-600 text-white text-left">
+    <div className="overflow-x-auto mx-auto px-4">
+
+      <div className="text-center mb-8 space-y-2">
+        <h1 className="text-3xl md:text-4xl font-bold text-green-700">
+          View Your Submitted Garden Tip
+        </h1>
+        <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+          Here you can see all the details of your gardening tip including the
+          plant type, difficulty level, category, and availability. <br />
+          Edit or manage your tip to help other garden lovers grow better!
+        </p>
+      </div>
+
+      <div className="w-full overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200">
+        <table className="min-w-[700px] w-full text-sm text-left text-gray-700">
+          <thead className="bg-green-600 text-white">
+            <tr>
               <th className="py-3 px-4">No</th>
-              <th className="py-3 px-4">image</th>
-              <th className="py-3 px-4">title</th>
+              <th className="py-3 px-4">Image</th>
+              <th className="py-3 px-4">Title</th>
               <th className="py-3 px-4">Plant Type</th>
-              <th className="py-3 px-4">Details</th>
+              <th className="py-3 px-4">Actions</th>
             </tr>
           </thead>
-          <tbody className="text-gray-700">
+          <tbody>
             {users.map((user, index) => (
-              <tr className="hover:bg-green-50">
+              <tr
+                key={user._id}
+                className="border-t border-gray-200 hover:bg-green-50 transition"
+              >
                 <td className="py-3 px-4">{index + 1}</td>
                 <td className="py-3 px-4">
-                  <img className="h-20 w-20" src={user.Images} alt="" />
+                  <img
+                    src={user.Images}
+                    alt={user.title}
+                    className="h-16 w-16 object-cover rounded"
+                  />
                 </td>
                 <td className="py-3 px-4">{user.title}</td>
                 <td className="py-3 px-4">{user.plantType}</td>
                 <td className="py-3 px-4">
-                  <div className="join flex items-center gap-2">
-                    <button className="btn join-item text-white bg-green-500">
-                      <FaEye />
-                    </button>
-                    <button className="btn join-item text-white bg-green-500">
-                      <FaEdit />
+                  <div className="flex items-center gap-2">
+                    <button className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
+                      <FaEdit className="text-lg" />
                     </button>
                     <button
                       onClick={() => handleDelete(user._id)}
-                      className="btn join-item text-white bg-green-500"
+                      className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
                     >
-                      {" "}
-                      <MdDelete />{" "}
+                      <MdDelete className="text-lg" />
                     </button>
                   </div>
                 </td>

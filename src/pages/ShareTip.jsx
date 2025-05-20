@@ -4,11 +4,12 @@ import Swal from "sweetalert2";
 
 const ShareTip = () => {
   const { user } = use(AuthContext);
+  console.log(user);
   const handleShareTip = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = user?.email;
-    const name = user?.name;
+    const name = user?.displayName;
     const formData = new FormData(form);
     const { ...userData } = Object.fromEntries(formData.entries());
     const data = {
@@ -39,11 +40,19 @@ const ShareTip = () => {
       });
   };
   return (
-    <div className="max-w-6xl min-h-[calc(100vh-117px)] mx-auto py-8">
+    <div className="max-w-6xl min-h-[calc(100vh-117px)] mx-auto py-12">
       <div className="p-10 bg-gradient-to-r from-purple-400 to-green-500 rounded-2xl shadow-xl">
+        <div className="text-center space-y-2 mb-10">
+          <h1 className="text-3xl font-bold text-green-800">Share Your Favorite Gardening Tip!</h1>
+          <p>
+            Have a unique gardening hack or helpful advice? Share your tips with
+            our community of garden lovers! Whether it’s about composting, plant
+            care, or vertical gardening, your experience can help others grow
+            better gardens.
+          </p>
+        </div>
         <form onSubmit={handleShareTip} className="space-y-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Title */}
+          <div className="grid grid-cols-1 gap-6">
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-1">Title</label>
               <input
@@ -54,7 +63,6 @@ const ShareTip = () => {
               />
             </fieldset>
 
-            {/* Plant Type */}
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-1">
                 Plant Type
@@ -67,7 +75,6 @@ const ShareTip = () => {
               />
             </fieldset>
 
-            {/* Image URL */}
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-1">
                 Image URL
@@ -80,7 +87,6 @@ const ShareTip = () => {
               />
             </fieldset>
 
-            {/* Difficulty Level */}
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-2">
                 Difficulty Level
@@ -116,7 +122,6 @@ const ShareTip = () => {
               </div>
             </fieldset>
 
-            {/* Category */}
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-2">
                 Category
@@ -152,7 +157,6 @@ const ShareTip = () => {
               </div>
             </fieldset>
 
-            {/* Description */}
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
               <label className="block text-sm font-semibold mb-1">
                 Description
@@ -165,7 +169,6 @@ const ShareTip = () => {
               ></textarea>
             </fieldset>
 
-            {/* Availability */}
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-2">
                 Availability
@@ -193,7 +196,6 @@ const ShareTip = () => {
             </fieldset>
           </div>
 
-          {/* Submit Button */}
           <div>
             <input
               type="submit"
