@@ -7,6 +7,7 @@ import ExploreGarden from "../pages/ExploreGarden";
 import MyTip from "../pages/MyTip";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import BrowsTips from "../components/BrowsTips";
 
 export const router =createBrowserRouter([
     {
@@ -22,6 +23,10 @@ export const router =createBrowserRouter([
             {
                 path:'/shareTip',
                 Component:ShareTip
+            },
+            {
+                path:'/browseTips',
+                Component:BrowsTips
             },
             {
                 path:'/exploreGarden',

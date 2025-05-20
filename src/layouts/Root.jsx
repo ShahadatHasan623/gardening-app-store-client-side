@@ -9,7 +9,7 @@ const Root = () => {
             <section>
                 <Header></Header>
             </section>
-            <section className='max-w-6xl mx-auto min-h-[calc(100vh-117px)] py-8'>
+            <section className='min-h-[calc(100vh-117px)]'>
                 <Outlet></Outlet>
             </section>
             <section>

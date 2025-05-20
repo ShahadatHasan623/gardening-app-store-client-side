@@ -28,6 +28,16 @@ const Header = () => {
       </li>
       <li className="text-white">
         <NavLink
+          to="/browseTips"
+          className={({ isActive }) =>
+            isActive ? "btn btn-info rounded-4xl border-none" : ""
+          }
+        >
+          BrowseTips
+        </NavLink>
+      </li>
+      <li className="text-white">
+        <NavLink
           to="/shareTip"
           className={({ isActive }) =>
             isActive ? "btn btn-info rounded-4xl border-none" : ""
