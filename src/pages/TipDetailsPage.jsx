@@ -5,7 +5,7 @@ const TipDetailsPage = () => {
   const Details = useLoaderData();
   console.log(Details);
   return (
-    <div className="max-w-6xl mx-auto py-8 min-h-[calc(100vh-117px)]">
+    <div className="max-w-6xl mx-auto py-12 min-h-[calc(100vh-117px)]">
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
         <div className="md:w-1/2">
           <img

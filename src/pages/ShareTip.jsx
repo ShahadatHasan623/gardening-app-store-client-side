@@ -25,15 +25,17 @@ const ShareTip = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Data Add successFully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        console.log("after the getting db", data);
-        form.reset();
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Data Add successFully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          console.log("after the getting db", data);
+          form.reset();
+        }
       });
   };
   return (

@@ -56,7 +56,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-4xl p-12">
+    <div className="min-h-[calc(100vh-117px)] max-w-6xl mx-auto flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-4xl p-12 my-12">
       <form
         onSubmit={handleSignUp}
         className="bg-white rounded-xl shadow-2xl p-8 max-w-md w-full transform transition-transform  hover:shadow-3xl"

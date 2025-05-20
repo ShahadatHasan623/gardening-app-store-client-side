@@ -38,7 +38,7 @@ const SignIn = () => {
       });
   };
   return (
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600 p-4 rounded-4xl">
+    <div class="min-h-[calc(100vh-117px)] flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600 p-4 my-12 rounded-4xl max-w-6xl mx-auto p-12">
       <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
           Login to Your Account

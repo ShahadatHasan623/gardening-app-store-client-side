@@ -42,6 +42,12 @@ export const router = createBrowserRouter([
       {
         path: "/myTip",
         Component: MyTip,
+        loader: () => fetch("http://localhost:3000/garden"),
+        hydrateFallbackElement: (
+          <div flex items-center justify-center>
+            <span className="loading loading-bars loading-xl"></span>
+          </div>
+        ),
       },
       {
         path: "/signIn",
@@ -52,15 +58,16 @@ export const router = createBrowserRouter([
         Component: SignUp,
       },
       {
-        path:'/tipDetails/:id',
-        Component:TipDetailsPage,
+        path: "/tipDetails/:id",
+        Component: TipDetailsPage,
         hydrateFallbackElement: (
           <div className="flex items-center justify-center">
             <span className="loading loading-bars loading-xl"></span>
           </div>
         ),
-        loader:({params})=>fetch(`http://localhost:3000/garden/${params.id}`)
-      }
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/garden/${params.id}`),
+      },
     ],
   },
 ]);
