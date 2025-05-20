@@ -17,7 +17,7 @@ const BrowsTips = () => {
           </tr>
         </thead>
         <tbody className="text-gray-700">
-          {browseData.map((brows, index) => (
+          {browseData.filter(brows => brows.availability === 'public').map((brows, index) => (
             <tr key={brows._id} className="hover:bg-green-50">
               <td className="py-3 px-4">{index + 1}</td>
               <td className="py-3 px-4">
@@ -25,7 +25,7 @@ const BrowsTips = () => {
               </td>
               <td className="py-3 px-4">{brows.title}</td>
               <td className="py-3 px-4">
-                <Link className="btn bg-green-500 text-white"><FaEye /></Link>
+                <Link to={`/tipDetails/${brows._id}`} className="btn bg-green-500 text-white"><FaEye /></Link>
               </td>
             </tr>
           ))}
