@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { MdDelete, MdJavascript } from "react-icons/md";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const MyTipCard = ({ users, setUsers }) => {
@@ -76,9 +77,9 @@ const MyTipCard = ({ users, setUsers }) => {
                 <td className="py-3 px-4">{user.plantType}</td>
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-2">
-                    <button className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
+                    <Link to={`/update/${user._id}`}  className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
                       <FaEdit className="text-lg" />
-                    </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(user._id)}
                       className="btn btn-sm bg-red-500 text-white hover:bg-red-600"

@@ -9,6 +9,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import BrowsTips from "../components/BrowsTips";
 import TipDetailsPage from "../pages/TipDetailsPage";
+import Update from "../pages/Update";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,17 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/garden/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/garden/${params.id}`),
+        hydrateFallbackElement: (
+          <div className="flex items-center justify-center">
+            <span className="loading loading-bars loading-xl"></span>
+          </div>
+        ),
+        Component: Update,
       },
     ],
   },
