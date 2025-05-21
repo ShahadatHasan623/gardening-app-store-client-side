@@ -1,7 +1,6 @@
 import React from "react";
 import GardenersCard from "./GardenersCard";
 import { motion } from "framer-motion";
-import { Link } from "react-router";
 
 
 const container = {
