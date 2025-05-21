@@ -11,14 +11,14 @@ import {
 import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { motion } from "motion/react";
-import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   const images = [
     {
       id: "event-1",
-      title: "Bloom & Grow Expo",
+      title: ["Bloom & Grow Expo"],
       date: "June 10, 2025",
       time: "10:00 AM - 6:00 PM",
       location: "Botanical Garden, Dhaka",
@@ -36,7 +36,7 @@ const Home = () => {
     },
     {
       id: "event-2",
-      title: "Spring Into Gardening",
+      title: ["Spring Into Gardening"],
       date: "May 5, 2025",
       time: "9:00 AM - 4:00 PM",
       location: "Green Field Park, Chattogram",
@@ -53,7 +53,7 @@ const Home = () => {
     },
     {
       id: "event-3",
-      title: "The Gardeners' Gathering",
+      title: ["The Gardeners' Gathering"],
       date: "April 10, 2025",
       time: "2:00 PM - 7:00 PM",
       location: "Urban Garden Center, Rajshahi",
@@ -97,8 +97,23 @@ const Home = () => {
                 `,
               }}
             >
-              <div className="text-white w-1/2 bg-black/50 flex flex-col  justify-center rounded-xl space-y-3 lg:p-15 p-8">
-                <h1 className="lg:text-4xl text-2xl"> {image.title}</h1>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 1.5 }}
+                className="text-white w-1/2 bg-black/50 flex flex-col  justify-center rounded-xl space-y-3 lg:p-15 p-8"
+              >
+                <h1 className="lg:text-4xl text-2xl font-semibold">
+                  <Typewriter
+                    words={image.title}
+                    loop={false}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={80}
+                    deleteSpeed={50}
+                    delaySpeed={2000}
+                  />
+                </h1>
                 <div className="flex items-center gap-2">
                   <CalendarDays className="text-red-200" />
                   <p>{image.date}</p>
@@ -141,7 +156,7 @@ const Home = () => {
                     <a href={image.website}>event</a>
                   </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         ))}

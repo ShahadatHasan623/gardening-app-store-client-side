@@ -98,12 +98,17 @@ const Header = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center gap-1">
+          <motion.div
+            initial={{ y: -250 }}
+            animate={{ y: -10 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+            className="flex items-center gap-1"
+          >
             <img className="h-20" src={logoImg} alt="" />
             <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-green-200 to-green-500 bg-clip-text text-transparent lg:block hidden">
               GreenNest
             </h1>
-          </div>
+          </motion.div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
