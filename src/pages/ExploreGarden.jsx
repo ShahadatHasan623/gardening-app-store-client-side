@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const ExploreGarden = () => {
+  const navigate =useNavigate()
   const handleExplore = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -9,7 +11,7 @@ const ExploreGarden = () => {
     const gardenersUser = Object.fromEntries(formData.entries());
     console.log(gardenersUser);
 
-    fetch("http://localhost:3000/gardeners", {
+    fetch("https://gardening-store-server.vercel.app/gardeners", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -26,7 +28,8 @@ const ExploreGarden = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          form.reset()
+          form.reset();
+          navigate('/')
         }
       });
   };
@@ -157,11 +160,7 @@ const ExploreGarden = () => {
           </div>
 
           <div>
-            <input
-              type="submit"
-              value="Submit"
-              className="btn btn-success w-full text-white text-lg"
-            />
+            <button  type="submit" className="btn btn-success w-full text-white text-lg">Add Explore</button>
           </div>
         </form>
       </div>

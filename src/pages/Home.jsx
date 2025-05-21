@@ -13,8 +13,11 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import Gardeners from "../components/Gardeners";
+import { useLoaderData } from "react-router";
 
 const Home = () => {
+  const gardener =useLoaderData()
   const images = [
     {
       id: "event-1",
@@ -164,7 +167,9 @@ const Home = () => {
         </Slide>
       </div>
 
-      
+      <div>
+        <Gardeners gardener={gardener}></Gardeners>
+      </div>
     </div>
   );
 };

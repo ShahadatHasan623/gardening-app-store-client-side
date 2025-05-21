@@ -22,10 +22,21 @@ export const router = createBrowserRouter([
         index: true,
         path: "/",
         Component: Home,
+        loader: () =>
+          fetch("https://gardening-store-server.vercel.app/gardeners"),
+        hydrateFallbackElement: (
+          <div className="flex items-center justify-center">
+            <span className="loading loading-bars loading-xl"></span>
+          </div>
+        ),
       },
       {
         path: "/shareTip",
-        element:<PrivateRoute><ShareTip></ShareTip></PrivateRoute> ,
+        element: (
+          <PrivateRoute>
+            <ShareTip></ShareTip>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/browseTips",
@@ -43,7 +54,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/myTip",
-        element:<PrivateRoute><MyTip></MyTip></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyTip></MyTip>
+          </PrivateRoute>
+        ),
         loader: () => fetch("https://gardening-store-server.vercel.app/garden"),
         hydrateFallbackElement: (
           <div className="flex items-center justify-center">
@@ -61,25 +76,37 @@ export const router = createBrowserRouter([
       },
       {
         path: "/tipDetails/:id",
-        element: <PrivateRoute><TipDetailsPage></TipDetailsPage></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <TipDetailsPage></TipDetailsPage>
+          </PrivateRoute>
+        ),
         hydrateFallbackElement: (
           <div className="flex items-center justify-center">
             <span className="loading loading-bars loading-xl"></span>
           </div>
         ),
         loader: ({ params }) =>
-          fetch(`https://gardening-store-server.vercel.app/garden/${params.id}`),
+          fetch(
+            `https://gardening-store-server.vercel.app/garden/${params.id}`
+          ),
       },
       {
         path: "/update/:id",
         loader: ({ params }) =>
-          fetch(`https://gardening-store-server.vercel.app/garden/${params.id}`),
+          fetch(
+            `https://gardening-store-server.vercel.app/garden/${params.id}`
+          ),
         hydrateFallbackElement: (
           <div className="flex items-center justify-center">
             <span className="loading loading-bars loading-xl"></span>
           </div>
         ),
-        element: <PrivateRoute><Update></Update></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Update></Update>
+          </PrivateRoute>
+        ),
       },
     ],
   },
