@@ -1,9 +1,11 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 
 const ShareTip = () => {
   const { user } = use(AuthContext);
+  const navigate =useNavigate()
   console.log(user);
   const handleShareTip = (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ const ShareTip = () => {
           });
           console.log("after the getting db", data);
           form.reset();
+          navigate('/browseTips')
         }
       });
   };

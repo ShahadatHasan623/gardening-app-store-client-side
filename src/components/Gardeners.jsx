@@ -52,15 +52,6 @@ const Gardeners = ({ gardener }) => {
             </motion.div>
           ))}
         </motion.div>
-
-        <div className="text-center mt-10">
-          <Link
-            to="/all-gardeners"
-            className="inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition"
-          >
-            Meet All Gardeners
-          </Link>
-        </div>
       </div>
     </motion.div>
   );

@@ -90,6 +90,11 @@ const MyTipCard = ({ users, setUsers }) => {
               ))}
           </tbody>
         </table>
+        {users.length === 0 && (
+          <p className="text-center py-4 text-gray-500">
+            No tips found for this level.
+          </p>
+        )}
       </div>
     </div>
   );
