@@ -22,7 +22,7 @@ const TipTrendingCard = () => {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {trending.map((tip, index) => (
             <div
-              key={tip._id || index} // ✅ key add করলাম
+              key={tip._id || index}
               className="bg-white shadow-md rounded-2xl p-6 border-l-4 border-green-500 hover:shadow-xl transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-green-800 mb-2">

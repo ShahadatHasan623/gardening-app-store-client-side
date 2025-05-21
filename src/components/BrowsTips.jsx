@@ -6,7 +6,6 @@ const BrowsTips = () => {
   const browseData = useLoaderData();
   const [selectedLevel, setSelectedLevel] = useState("all");
 
-  // ফিল্টার ফাংশন
   const filteredData = browseData.filter((brows) => {
     return (
       brows.availability === "public" &&
@@ -27,7 +26,6 @@ const BrowsTips = () => {
         </p>
       </div>
 
-      {/* ফিল্টার অপশন */}
       <div className="mb-6 text-right">
         <label className="mr-2 font-medium text-gray-700">
           Filter by Level:
