@@ -1,6 +1,6 @@
 import React from "react";
-import { FaEdit, FaEye } from "react-icons/fa";
-import { MdDelete, MdJavascript } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
@@ -21,33 +21,26 @@ const MyTipCard = ({ users, setUsers }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.deletedCount) {
-              const remaininguser = users.filter((userId) => userId._id !== id);
+            if (data?.deletedCount > 0) {
+              const remaininguser = users.filter((user) => user._id !== id);
               setUsers(remaininguser);
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success",
-              });
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
           });
       }
     });
   };
+
   return (
     <div className="overflow-x-auto mx-auto px-4">
-
-      <div className="text-center mb-8 space-y-2">
-        <h1 className="text-3xl md:text-4xl font-bold text-green-700">
-          View Your Submitted Garden Tip
-        </h1>
-        <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-          Here you can see all the details of your gardening tip including the
-          plant type, difficulty level, category, and availability. <br />
-          Edit or manage your tip to help other garden lovers grow better!
+      <div className="text-center space-y-3 mb-12">
+        <h1 className="lg:text-3xl text-2xl font-bold text-green-700 ">My Gardening Tip – Simple & Effective Ideas</h1>
+        <p>
+          Discover easy and practical gardening tips from personal experience! <br />
+          Learn how to plant, care for,  and protect your garden 
+          naturally—perfect <br /> for beginners and home gardeners.
         </p>
       </div>
-
       <div className="w-full overflow-x-auto bg-white rounded-lg shadow-md border border-gray-200">
         <table className="min-w-[700px] w-full text-sm text-left text-gray-700">
           <thead className="bg-green-600 text-white">
@@ -60,36 +53,41 @@ const MyTipCard = ({ users, setUsers }) => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
-              <tr
-                key={user._id}
-                className="border-t border-gray-200 hover:bg-green-50 transition"
-              >
-                <td className="py-3 px-4">{index + 1}</td>
-                <td className="py-3 px-4">
-                  <img
-                    src={user.Images}
-                    alt={user.title}
-                    className="h-16 w-16 object-cover rounded"
-                  />
-                </td>
-                <td className="py-3 px-4">{user.title}</td>
-                <td className="py-3 px-4">{user.plantType}</td>
-                <td className="py-3 px-4">
-                  <div className="flex items-center gap-2">
-                    <Link to={`/update/${user._id}`}  className="btn btn-sm bg-green-500 text-white hover:bg-green-600">
-                      <FaEdit className="text-lg" />
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(user._id)}
-                      className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
-                    >
-                      <MdDelete className="text-lg" />
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
+            {users
+              .filter((user) => user.email === user.email)
+              .map((user, index) => (
+                <tr
+                  key={user._id}
+                  className="border-t border-gray-200 hover:bg-green-50 transition"
+                >
+                  <td className="py-3 px-4">{index + 1}</td>
+                  <td className="py-3 px-4">
+                    <img
+                      src={user.Images || "https://via.placeholder.com/100"}
+                      alt={user.title}
+                      className="h-16 w-16 object-cover rounded"
+                    />
+                  </td>
+                  <td className="py-3 px-4">{user.title}</td>
+                  <td className="py-3 px-4">{user.plantType}</td>
+                  <td className="py-3 px-4">
+                    <div className="flex items-center gap-2">
+                      <Link
+                        to={`/update/${user._id}`}
+                        className="btn btn-sm bg-green-500 text-white hover:bg-green-600"
+                      >
+                        <FaEdit className="text-lg" />
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(user._id)}
+                        className="btn btn-sm bg-red-500 text-white hover:bg-red-600"
+                      >
+                        <MdDelete className="text-lg" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

@@ -87,7 +87,7 @@ const SignIn = () => {
             Log In
           </button>
 
-          <button
+          <Link to="/"
             onClick={handleGoogleSignIn}
             className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
           >
@@ -119,7 +119,7 @@ const SignIn = () => {
               </g>
             </svg>
             Login with Google
-          </button>
+          </Link>
         </form>
 
         <p class="mt-6 text-center text-gray-600 text-sm">

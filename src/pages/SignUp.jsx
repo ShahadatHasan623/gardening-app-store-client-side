@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const SignUp = () => {
   const { signUp, google, setUser, updateUser } = use(AuthContext);
@@ -126,7 +126,7 @@ const SignUp = () => {
           Sign Up
         </button>
 
-        <button
+        <Link to='/'
           onClick={handleGoogleSignUp}
           className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
         >
@@ -158,7 +158,7 @@ const SignUp = () => {
             </g>
           </svg>
           Login with Google
-        </button>
+        </Link>
       </form>
     </div>
   );

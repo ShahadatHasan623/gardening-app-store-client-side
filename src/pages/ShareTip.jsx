@@ -168,6 +168,17 @@ const ShareTip = () => {
                 placeholder="Write your tip..."
               ></textarea>
             </fieldset>
+            <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
+              <label className="block text-sm font-semibold mb-1">
+                Like
+              </label>
+              <input
+                type="number"
+                name="totalLike"
+                className="w-full"
+                placeholder="Like"
+              ></input>
+            </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-2">
