@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const Update = () => {
   const updateUser = useLoaderData();
-  const navigate =useNavigate()
+  const navigate = useNavigate();
   const {
     _id,
     Images,
@@ -38,7 +38,7 @@ const Update = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate('/myTip')
+          navigate("/myTip");
         }
       });
   };
@@ -113,6 +113,7 @@ const Update = () => {
                 <label>
                   <input
                     type="radio"
+                    defaultChecked={level === "medium"}
                     name="level"
                     value="medium"
                     className="mr-1"
@@ -123,6 +124,7 @@ const Update = () => {
                   <input
                     type="radio"
                     name="level"
+                    defaultChecked={level === "hard"}
                     value="hard"
                     className="mr-1"
                   />{" "}
@@ -150,6 +152,7 @@ const Update = () => {
                   <input
                     type="radio"
                     name="category"
+                    defaultChecked={category === "Plant Care"}
                     value="Plant Care"
                     className="mr-1"
                   />{" "}
@@ -159,6 +162,7 @@ const Update = () => {
                   <input
                     type="radio"
                     name="category"
+                    defaultChecked={category === "Vertical Gardening"}
                     value="Vertical Gardening"
                     className="mr-1"
                   />{" "}
@@ -199,6 +203,7 @@ const Update = () => {
                   <input
                     type="radio"
                     name="availability"
+                    defaultChecked={availability === "hidden"}
                     value="hidden"
                     className="mr-1"
                   />{" "}
