@@ -1,6 +1,35 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const ExploreGarden = () => {
+  const handleExplore = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const gardenersUser = Object.fromEntries(formData.entries());
+    console.log(gardenersUser);
+
+    fetch("http://localhost:3000/gardeners", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(gardenersUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset()
+        }
+      });
+  };
   return (
     <div className="max-w-6xl min-h-[calc(100vh-117px)] mx-auto py-12">
       <div className="p-10 bg-gradient-to-r from-purple-400 to-green-500 rounded-2xl shadow-xl">
@@ -9,7 +38,7 @@ const ExploreGarden = () => {
             Gardener Info Form
           </h1>
         </div>
-        <form className="space-y-8">
+        <form onSubmit={handleExplore} className="space-y-8">
           <div className="grid grid-cols-1 gap-6">
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-1">
@@ -57,6 +86,17 @@ const ExploreGarden = () => {
               ></textarea>
             </fieldset>
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
+              <label className="block text-sm font-medium text-gray-700">
+                Other Info
+              </label>
+              <textarea
+                name="otherInfo"
+                rows="3"
+                className="mt-1 block w-full px-4 py-2 border-2 focus:ring-2 border-gray-300 rounded-md  focus:ring-green-400"
+                placeholder="Any other relevant information..."
+              ></textarea>
+            </fieldset>
+            <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
               <label className="block text-sm font-semibold mb-1">
                 Total Shared Tips
               </label>
@@ -68,6 +108,29 @@ const ExploreGarden = () => {
               />
             </fieldset>
 
+            <fieldset className="bg-white rounded-xl border p-4 shadow">
+              <label className="block text-sm font-semibold mb-2">Gender</label>
+              <div className="space-x-4">
+                <label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    className="mr-1"
+                  />{" "}
+                  Male
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    className="mr-1"
+                  />{" "}
+                  Female
+                </label>
+              </div>
+            </fieldset>
             <fieldset className="bg-white rounded-xl border p-4 shadow">
               <label className="block text-sm font-semibold mb-2">Status</label>
               <div className="space-x-4">
