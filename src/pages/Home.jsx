@@ -8,7 +8,7 @@ import {
   MapPinPlus,
   Users2Icon,
 } from "lucide-react";
-import React, { use } from "react";
+import React from "react";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { motion } from "framer-motion";
@@ -18,9 +18,7 @@ import { useLoaderData } from "react-router";
 import TipTrendingCard from "../components/TipTrendingCard";
 
 
-// const trendingData=fetch('https://gardening-store-server.vercel.app/garden').then(res=>res.json())
 const Home = () => {
-  // const trending =use(trendingData)
 
   const gardener =useLoaderData()
   const images = [
