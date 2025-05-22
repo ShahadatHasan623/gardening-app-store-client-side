@@ -17,7 +17,7 @@ const Header = () => {
   };
   const links = (
     <>
-      <li className="text-white">
+      <li className="lg:text-white">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -27,7 +27,7 @@ const Header = () => {
           Home
         </NavLink>
       </li>
-      <li className="text-white">
+      <li className="lg:text-white">
         <NavLink
           to="/browseTips"
           className={({ isActive }) =>
@@ -37,7 +37,7 @@ const Header = () => {
           BrowseTips
         </NavLink>
       </li>
-      <li className="text-white">
+      <li className="lg:text-white">
         <NavLink
           to="/shareTip"
           className={({ isActive }) =>
@@ -47,7 +47,7 @@ const Header = () => {
           Share a Garden Tip
         </NavLink>
       </li>
-      <li className="text-white">
+      <li className="lg:text-white">
         <NavLink
           to="/exploreGarden"
           className={({ isActive }) =>
@@ -58,7 +58,7 @@ const Header = () => {
           Explore Gardeners
         </NavLink>
       </li>
-      <li className="text-white">
+      <li className="lg:text-white">
         <NavLink
           to="/myTip"
           className={({ isActive }) =>
