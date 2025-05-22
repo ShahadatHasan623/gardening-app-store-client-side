@@ -17,6 +17,7 @@ import Gardeners from "../components/Gardeners";
 import { useLoaderData } from "react-router";
 import TipTrendingCard from "../components/TipTrendingCard";
 import Landscaping from "./Landscaning";
+import LandscapingCard from "./LandscapingCard";
 
 const Home = () => {
   const gardener = useLoaderData();
@@ -174,6 +175,9 @@ const Home = () => {
       </div>
       <div>
         <TipTrendingCard></TipTrendingCard>
+      </div>
+      <div>
+        <LandscapingCard></LandscapingCard>
       </div>
       <motion.div
         initial={{ opacity: 0, rotateX: "90deg" }}
