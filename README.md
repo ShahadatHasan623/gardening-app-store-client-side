@@ -1,12 +1,22 @@
-# React + Vite
+# Granding Garden
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🔗 **Live Site URL**: [https://gardening-app-store-a10.netlify.app/](https://gardening-app-store-a10.netlify.app/)
 
-Currently, two official plugins are available:
+## 🌿 Project Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🌱 Add new plants or garden items with name, type, and care instructions
+- 🖼️ Upload and view plant images in a responsive gallery
+- 🛒 Add garden items to cart for ordering (e-commerce feature)
+- 🔍 Search and filter plants by category or name
+- 📝 User can post reviews and tips about gardening
+- 📱 Fully responsive UI – works smoothly on mobile, tablet, and desktop
+- ⚙️ Backend built with Node.js & Express, data stored in MongoDB
 
-## Expanding the ESLint configuration
+## 🏡 Project Description
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Granding Garden** is a beautifully designed garden management and e-commerce platform that allows plant lovers to explore, learn about, and shop for various plants and gardening tools. Whether you're a seasoned gardener or a curious beginner, this platform offers everything you need – from information about plant care to buying seeds, tools, and accessories.
+
+The main objective of Granding Garden is to promote eco-friendly living by making gardening easy and accessible. With features like plant search, reviews, cart system, and responsive design, it offers a complete and modern user experience.
+
+---
+
