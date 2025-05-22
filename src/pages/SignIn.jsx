@@ -39,13 +39,13 @@ const SignIn = () => {
       });
   };
   return (
-    <div class="min-h-[calc(100vh-117px)] flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600 p-4 my-12 rounded-4xl max-w-6xl mx-auto p-12">
-      <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+    <div className="min-h-[calc(100vh-117px)] flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600 p-4 my-12 rounded-4xl max-w-6xl mx-auto p-12">
+      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
+        <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Login to Your Account
         </h2>
 
-        <form onSubmit={handleSignIn} class="space-y-6">
+        <form onSubmit={handleSignIn} className="space-y-6">
           <div>
             <label
               for="email"
@@ -57,7 +57,7 @@ const SignIn = () => {
               type="email"
               id="email"
               name="email"
-              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
               required
             />
@@ -66,7 +66,7 @@ const SignIn = () => {
           <div>
             <label
               for="password"
-              class="block mb-2 text-sm font-medium text-gray-700"
+              className="block mb-2 text-sm font-medium text-gray-700"
             >
               Password
             </label>
@@ -74,7 +74,7 @@ const SignIn = () => {
               type="password"
               id="password"
               name="password"
-              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
               required
             />
@@ -82,7 +82,7 @@ const SignIn = () => {
 
           <button
             type="submit"
-            class="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition"
           >
             Log In
           </button>
