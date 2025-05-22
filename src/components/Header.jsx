@@ -5,10 +5,11 @@ import { NavLink } from "react-router";
 import logoImg from "../assets/logo.png";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
-import UseDarkMood from "./UseDarkMood";
+import ThemeToggle from "c:/Users/Shahadat/Downloads/ThemeToggle";
 
-const MotionNavLink = motion.create(NavLink);
+
 const Header = () => {
+ 
   const { user, signout } = use(AuthContext);
   const [open, setOpen] = useState(false);
   const handleSignOut = () => {
@@ -115,9 +116,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          <div>
-            <UseDarkMood></UseDarkMood>
-          </div>
+          <ThemeToggle></ThemeToggle>
           {user ? (
             <div className="relative inline-block text-left">
               <div onClick={() => setOpen(!open)} className="cursor-pointer">

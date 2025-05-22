@@ -44,7 +44,7 @@ const ExploreGarden = () => {
         <form onSubmit={handleExplore} className="space-y-8">
           <div className="grid grid-cols-1 gap-6">
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Gardener's Name
               </label>
               <input
@@ -56,7 +56,7 @@ const ExploreGarden = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-1">Age</label>
+              <label className="block text-sm font-semibold mb-1 text-black">Age</label>
               <input
                 type="number"
                 name="age"
@@ -66,7 +66,7 @@ const ExploreGarden = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Image URL
               </label>
               <input
@@ -78,29 +78,29 @@ const ExploreGarden = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Experience
               </label>
               <textarea
                 rows="3"
                 name="experience"
                 placeholder="Describe experience..."
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-400"
+                className="w-full px-4 py-2 border rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400"
               ></textarea>
             </fieldset>
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-black">
                 Other Info
               </label>
               <textarea
                 name="otherInfo"
                 rows="3"
-                className="mt-1 block w-full px-4 py-2 border-2 focus:ring-2 border-gray-300 rounded-md  focus:ring-green-400"
+                className="mt-1 block w-full px-4 py-2 border-2 focus:ring-2 border-gray-300 rounded-md text-gray-800  focus:ring-green-400"
                 placeholder="Any other relevant information..."
               ></textarea>
             </fieldset>
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Total Shared Tips
               </label>
               <input
@@ -112,9 +112,9 @@ const ExploreGarden = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-2">Gender</label>
+              <label className="block text-sm font-semibold mb-2 text-black">Gender</label>
               <div className="space-x-4">
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="gender"
@@ -123,7 +123,7 @@ const ExploreGarden = () => {
                   />{" "}
                   Male
                 </label>
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="gender"
@@ -135,9 +135,9 @@ const ExploreGarden = () => {
               </div>
             </fieldset>
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-2">Status</label>
+              <label className="block text-sm font-semibold mb-2 text-black">Status</label>
               <div className="space-x-4">
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="status"
@@ -146,7 +146,7 @@ const ExploreGarden = () => {
                   />{" "}
                   Active
                 </label>
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="status"

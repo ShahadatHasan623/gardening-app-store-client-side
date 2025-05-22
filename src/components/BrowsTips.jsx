@@ -19,15 +19,15 @@ const BrowsTips = () => {
         <h1 className="text-3xl md:text-4xl font-bold text-green-700">
           Browse Gardening Ideas
         </h1>
-        <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+        <p className="text-gray-500 text-sm md:text-base leading-relaxed">
           Discover a variety of helpful gardening tips to make your green space
-          thrive! Composting, plant care, and vertical gardening — expert advice
+          thrive!  Composting, <br /> plant care,  and vertical gardening — expert advice
           for every gardener.
         </p>
       </div>
 
       <div className="mb-6 text-right">
-        <label className="mr-2 font-medium text-gray-700">
+        <label className="mr-2 font-medium text-gray-500">
           Filter by Level:
         </label>
         <select
@@ -35,10 +35,10 @@ const BrowsTips = () => {
           onChange={(e) => setSelectedLevel(e.target.value)}
           className="border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-400"
         >
-          <option value="all">All</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
+          <option className="text-black" value="all">All</option>
+          <option className="text-black" value="easy">Easy</option>
+          <option className="text-black" value="medium">Medium</option>
+          <option className="text-black" value="hard">Hard</option>
         </select>
       </div>
 

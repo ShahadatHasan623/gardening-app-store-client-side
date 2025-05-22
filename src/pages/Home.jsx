@@ -183,7 +183,6 @@ const Home = () => {
         initial={{ opacity: 0, rotateX: "90deg" }}
         whileInView={{ opacity: 1, rotateX: 0 }}
         transition={{ duration: 2 }}
-        className="bg-green-100"
       >
         <Landscaping></Landscaping>
       </motion.div>

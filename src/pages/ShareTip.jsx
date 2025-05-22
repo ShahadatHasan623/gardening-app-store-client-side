@@ -57,7 +57,7 @@ const ShareTip = () => {
         <form onSubmit={handleShareTip} className="space-y-8">
           <div className="grid grid-cols-1 gap-6">
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-1">Title</label>
+              <label className="block text-sm font-semibold mb-1 text-black">Title</label>
               <input
                 type="text"
                 name="title"
@@ -67,7 +67,7 @@ const ShareTip = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Plant Type
               </label>
               <input
@@ -79,7 +79,7 @@ const ShareTip = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Image URL
               </label>
               <input
@@ -91,11 +91,11 @@ const ShareTip = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-2">
+              <label className="block text-sm font-semibold mb-2 text-black">
                 Difficulty Level
               </label>
               <div className="space-x-4">
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="level"
@@ -104,7 +104,7 @@ const ShareTip = () => {
                   />{" "}
                   Easy
                 </label>
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="level"
@@ -113,7 +113,7 @@ const ShareTip = () => {
                   />{" "}
                   Medium
                 </label>
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="level"
@@ -126,11 +126,11 @@ const ShareTip = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-2">
+              <label className="block text-sm font-semibold mb-2 text-black">
                 Category
               </label>
               <div className="space-x-4">
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="category"
@@ -139,7 +139,7 @@ const ShareTip = () => {
                   />{" "}
                   Composting
                 </label>
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="category"
@@ -161,7 +161,7 @@ const ShareTip = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Description
               </label>
               <textarea
@@ -172,7 +172,7 @@ const ShareTip = () => {
               ></textarea>
             </fieldset>
             <fieldset className="bg-white rounded-xl border p-4 shadow lg:col-span-1">
-              <label className="block text-sm font-semibold mb-1">
+              <label className="block text-sm font-semibold mb-1 text-black">
                 Like
               </label>
               <input
@@ -184,11 +184,11 @@ const ShareTip = () => {
             </fieldset>
 
             <fieldset className="bg-white rounded-xl border p-4 shadow">
-              <label className="block text-sm font-semibold mb-2">
+              <label className="block text-sm font-semibold mb-2 text-black">
                 Availability
               </label>
               <div className="space-x-4">
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="availability"
@@ -197,7 +197,7 @@ const ShareTip = () => {
                   />{" "}
                   Public
                 </label>
-                <label>
+                <label className="text-black">
                   <input
                     type="radio"
                     name="availability"

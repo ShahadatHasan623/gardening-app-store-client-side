@@ -24,7 +24,7 @@ const Gardeners = ({ gardener }) => {
       initial={{ opacity: 0, translateX: "-100%" }}
       whileInView={{ opacity: 1, translateX: 0 }}
       transition={{ duration: 1, type: "spring" }}
-      className="w-full py-12 bg-gradient-to-br from-green-100 via-green-200 to-green-300 lg:px-0 px-4"
+      className="w-full py-12  lg:px-0 px-4"
     >
       <div className="py-12 max-w-6xl mx-auto lg:p-0">
         <div className="text-center space-y-2 mb-10">

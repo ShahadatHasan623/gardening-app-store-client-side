@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const LandscapingCard = () => {
   return (
-    <div className="flex max-w-6xl mx-auto flex-col md:flex-row items-center justify-center gap-6 bg-white py-30 lg:px-0 px-4">
+    <div className="flex max-w-6xl mx-auto flex-col md:flex-row items-center justify-center gap-6  py-30 lg:px-0 px-4">
       <motion.div
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -45,11 +45,11 @@ const LandscapingCard = () => {
         className="w-full md:w-1/2 text-gray-800 space-y-4 relative z-10"
       >
         <p className="text-sm text-orange-600 font-semibold">Who we are</p>
-        <h2 className="text-2xl font-bold leading-tight">
+        <h2 className="text-2xl font-bold leading-tight text-blue-500">
           Landscaping & Lawn Care Services for Commercial & Residential
           Properties
         </h2>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-600">
           Nulla pede imperdiet ut litora interdum velit dictum libero odio. Leo
           cursus aliquam consectetur dis sociosqu praesent lobortis luctus
           tincidunt ultricies ullamcorper. Risus praesent letius justo congue
@@ -59,11 +59,11 @@ const LandscapingCard = () => {
         <div className="flex gap-8 pt-4">
           <div>
             <p className="text-green-700 text-2xl font-bold">4,000+</p>
-            <p className="text-sm font-semibold">Project Done</p>
+            <p className="text-sm font-semibold text-gray-600">Project Done</p>
           </div>
           <div>
-            <p className="text-green-700 text-2xl font-bold">3375+</p>
-            <p className="text-sm font-semibold">Happy Client</p>
+            <p className="text-green-700 text-2xl font-bold ">3375+</p>
+            <p className="text-sm font-semibold text-gray-600 ">Happy Client</p>
           </div>
         </div>
 
