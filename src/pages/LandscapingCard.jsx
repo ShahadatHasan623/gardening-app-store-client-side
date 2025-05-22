@@ -1,12 +1,15 @@
 import React from "react";
 import logoImg from "../assets/igarden-1.png";
 import { motion } from "framer-motion";
+
 const LandscapingCard = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col md:flex-row items-center justify-center gap-6 bg-white py-30 lg:px-0 px-4">
+      
+      {/* Left card */}
       <motion.div
-         initial={{ x:-100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
+        initial={{ y: 30, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
         whileHover={{ scale: 1.02 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -35,9 +38,10 @@ const LandscapingCard = () => {
         </p>
       </motion.div>
 
+      {/* Right card */}
       <motion.div
-        initial={{ x:100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
+        initial={{ y: 30, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
         whileHover={{ scale: 1.02 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6, ease: "easeOut" }}

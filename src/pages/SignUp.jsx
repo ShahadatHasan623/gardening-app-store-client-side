@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 
 const SignUp = () => {
   const { signUp, google, setUser, updateUser } = use(AuthContext);
@@ -162,6 +162,9 @@ const SignUp = () => {
           </svg>
           Login with Google
         </Link>
+        <div className="pt-3 text-center">
+          <p>Already have an account?<NavLink to='/signIn' className="text-blue-500 hover:underline">sign In</NavLink> </p>
+        </div>
       </form>
     </div>
   );

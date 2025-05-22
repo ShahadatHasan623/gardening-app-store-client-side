@@ -108,7 +108,7 @@ const Home = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.5, duration: 1.5 }}
-                  className="text-white w-1/2 bg-black/50 flex flex-col  justify-center rounded-xl space-y-3 lg:p-15 p-8"
+                  className="text-white w-3/4 bg-black/50 flex flex-col  justify-center rounded-xl space-y-3 lg:py-10 lg:px-40 p-8"
                 >
                   <h1 className="lg:text-4xl text-2xl font-semibold">
                     <Typewriter
@@ -153,7 +153,7 @@ const Home = () => {
                   </div>
                   <div>
                     <motion.button
-                      className="py-2 px-15  border-2 rounded-4xl text-xl"
+                      className="py-2 px-8 lg:px-15  border-2 rounded-4xl text-xl"
                       whileHover={{
                         scale: 1.1,
                         textShadow: "0px 0px 8px rgb(255,255,255)",

@@ -3,7 +3,7 @@ import React from "react";
 const GardenersCard = ({ gardeners }) => {
   const { image, name, otherInfo, experience } = gardeners;
   return (
-    <div className="card w-full max-w-sm mx-auto bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl overflow-hidden border border-gray-100">
+    <div className="card w-full max-w-sm h-full mx-auto bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl overflow-hidden border border-gray-100">
       <figure>
         <img
           src={image}
