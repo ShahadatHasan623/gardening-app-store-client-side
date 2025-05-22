@@ -5,6 +5,7 @@ import { NavLink } from "react-router";
 import logoImg from "../assets/logo.png";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import UseDarkMood from "./UseDarkMood";
 
 const MotionNavLink = motion.create(NavLink);
 const Header = () => {
@@ -114,6 +115,9 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
+          <div>
+            <UseDarkMood></UseDarkMood>
+          </div>
           {user ? (
             <div className="relative inline-block text-left">
               <div onClick={() => setOpen(!open)} className="cursor-pointer">

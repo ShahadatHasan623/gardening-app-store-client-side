@@ -36,9 +36,9 @@ const TipTrendingCard = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, type: "spring" }}
       viewport={{ once: true }}
-      className="py-12 px-4 bg-green-50 min-h-screen"
+      className="px-4 bg-green-50 min-h-screen"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto py-12">
         <h2 className="text-4xl font-bold text-center text-green-700 mb-10">
           🌿 Top Trending Gardening Tips
         </h2>

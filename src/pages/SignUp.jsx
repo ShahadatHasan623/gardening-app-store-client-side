@@ -16,14 +16,17 @@ const SignUp = () => {
 
     if (password.length < 8) {
       Swal.fire("❌ Password must be at least 8 characters long.");
+      return;
     } else if (!/[a-z]/.test(password)) {
       Swal.fire("❌ Password must include at least one lowercase letter.");
+      return;
     } else if (!/[A-Z]/.test(password)) {
       Swal.fire("❌ Password must include at least one uppercase letter.");
     } else if (!/[@$!%*?&]/.test(password)) {
       Swal.fire(
         "❌ Password must include at least one special character (@$!%*?&)."
       );
+      return
     } else {
       Swal.fire("✅ Password is strong.");
     }

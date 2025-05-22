@@ -26,7 +26,7 @@ const Gardeners = ({ gardener }) => {
       transition={{ duration: 1, type: "spring" }}
       className="w-full bg-gradient-to-br from-green-100 via-green-200 to-green-300"
     >
-      <div className="py-12 max-w-6xl mx-auto px-4">
+      <div className="py-12 max-w-6xl mx-auto lg:p-0">
         <div className="text-center space-y-2 mb-10">
           <h1 className="text-4xl font-bold text-green-700">Featured Gardeners</h1>
           <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
