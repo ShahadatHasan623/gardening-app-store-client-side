@@ -1,12 +1,16 @@
-import React, { use } from "react";
+import React, { use, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
-  const { signIn, google } = use(AuthContext);
+  const { signIn, google, forgotPassword } = use(AuthContext);
   const navigate = useNavigate();
-  const location =useLocation()
+  const [showpassword, setPassword] = useState(false);
+  const location = useLocation();
+  const emailRef = useRef();
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +27,7 @@ const SignIn = () => {
             timer: 1500,
           });
         }
-        navigate(`${location.state ? location.state : '/'}`)
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         console.log(error.message);
@@ -33,6 +37,16 @@ const SignIn = () => {
     google()
       .then((result) => {
         console.log(result);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  const handleForgotPassword= () => {
+    const email = emailRef.current.value;
+    forgotPassword(email)
+      .then(() => {
+        toast.success("Forgote Password Succesfully");
       })
       .catch((error) => {
         console.log(error.message);
@@ -55,6 +69,7 @@ const SignIn = () => {
             </label>
             <input
               type="email"
+              ref={emailRef}
               id="email"
               name="email"
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -63,7 +78,7 @@ const SignIn = () => {
             />
           </div>
 
-          <div>
+          <div className="relative">
             <label
               for="password"
               className="block mb-2 text-sm font-medium text-gray-700"
@@ -71,13 +86,23 @@ const SignIn = () => {
               Password
             </label>
             <input
-              type="password"
+              type={showpassword ? "text" : "password"}
               id="password"
               name="password"
               className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
               required
             />
+            <button
+              type="button"
+              onClick={() => setPassword(!showpassword)}
+              className="absolute top-8 right-0 px-3 py-3"
+            >
+              {showpassword ? <FaEye /> : <FaEyeSlash />}
+            </button>
+            <div>
+              <a onClick={handleForgotPassword} className="link link-hover">Forgot password?</a>
+            </div>
           </div>
 
           <button
@@ -87,7 +112,8 @@ const SignIn = () => {
             Log In
           </button>
 
-          <Link to="/"
+          <Link
+            to="/"
             onClick={handleGoogleSignIn}
             className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
           >

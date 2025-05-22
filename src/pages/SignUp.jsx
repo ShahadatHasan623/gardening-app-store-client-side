@@ -1,11 +1,13 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import { Link, NavLink, useNavigate } from "react-router";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
   const { signUp, google, setUser, updateUser } = use(AuthContext);
   const navigate = useNavigate();
+  const [showpassword, setPassword] = useState(false);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -26,7 +28,7 @@ const SignUp = () => {
       Swal.fire(
         "❌ Password must include at least one special character (@$!%*?&)."
       );
-      return
+      return;
     } else {
       Swal.fire("✅ Password is strong.");
     }
@@ -40,7 +42,7 @@ const SignUp = () => {
           draggable: true,
         });
         updateUser({ displayName: name, photoURL: photo }).then(() => {
-          setUser({ ...user, displayName: name, photoURL: photo});
+          setUser({ ...user, displayName: name, photoURL: photo });
           navigate("/");
         });
       })
@@ -106,7 +108,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className="mb-6">
+        <div className="mb-6 relative">
           <label
             className="block text-gray-700 mb-2 font-semibold"
             for="password"
@@ -115,11 +117,18 @@ const SignUp = () => {
           </label>
           <input
             id="password"
-            type="password"
+            type={showpassword ? "text" : "password"}
             name="password"
             placeholder="********"
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition"
           />
+            <button
+              type="button"
+              onClick={() => setPassword(!showpassword)}
+              className="absolute top-9 right-0 px-3 py-3"
+            >
+              {showpassword ? <FaEye /> : <FaEyeSlash />}
+            </button>
         </div>
 
         <button
@@ -129,7 +138,8 @@ const SignUp = () => {
           Sign Up
         </button>
 
-        <Link to='/'
+        <Link
+          to="/"
           onClick={handleGoogleSignUp}
           className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
         >
@@ -163,7 +173,12 @@ const SignUp = () => {
           Login with Google
         </Link>
         <div className="pt-3 text-center">
-          <p>Already have an account?<NavLink to='/signIn' className="text-blue-500 hover:underline">sign In</NavLink> </p>
+          <p>
+            Already have an account?
+            <NavLink to="/signIn" className="text-blue-500 hover:underline">
+              sign In
+            </NavLink>{" "}
+          </p>
         </div>
       </form>
     </div>
