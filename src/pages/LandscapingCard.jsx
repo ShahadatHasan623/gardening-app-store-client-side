@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const LandscapingCard = () => {
   return (
-    <div className="flex max-w-6xl mx-auto flex-col md:flex-row items-center justify-center gap-6  py-30 lg:px-0 px-4">
+    <div className="flex max-w-6xl mx-auto flex-col md:flex-row items-center justify-center gap-6  py-12 lg:px-0 px-4">
       <motion.div
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
