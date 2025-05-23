@@ -55,7 +55,7 @@ const Home = () => {
       registrationFee: "৳200",
       contactEmail: "spring@eventgarden.com",
       website: "https://springgardenfest.com",
-      url: "https://i.ibb.co/G3bQ094V/pexels-asphotograpy-101841.jpg",
+      url: "https://i.ibb.co/1Gyqx6wY/pexels-sevenstormphotography-381739.jpg",
     },
     {
       id: "event-3",
@@ -72,7 +72,7 @@ const Home = () => {
       registrationFee: "Free",
       contactEmail: "gathering@gardenspot.org",
       website: "https://gardenersgathering.org",
-      url: "https://i.ibb.co/G3bQ094V/pexels-asphotograpy-101841.jpg",
+      url: "https://i.ibb.co/YB4Ys2T2/pexels-leigh-patrick-14477-298246.jpg",
     },
   ];
 

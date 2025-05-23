@@ -5,7 +5,8 @@ import { NavLink } from "react-router";
 import logoImg from "../assets/logo.png";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
-import ThemeToggle from "c:/Users/Shahadat/Downloads/ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
+
 
 
 const Header = () => {
