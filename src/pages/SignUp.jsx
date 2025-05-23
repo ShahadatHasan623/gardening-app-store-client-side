@@ -3,6 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 import { Link, NavLink, useNavigate } from "react-router";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const { signUp, google, setUser, updateUser } = use(AuthContext);
@@ -54,6 +55,8 @@ const SignUp = () => {
     google()
       .then((result) => {
         console.log(result);
+        toast.success("Google Sign Up successfully")
+        navigate('/')
       })
       .catch((error) => {
         console.log(error.message);
@@ -138,8 +141,8 @@ const SignUp = () => {
           Sign Up
         </button>
 
-        <Link
-          to="/"
+        <button
+        type="button"
           onClick={handleGoogleSignUp}
           className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
         >
@@ -171,7 +174,7 @@ const SignUp = () => {
             </g>
           </svg>
           Login with Google
-        </Link>
+        </button>
         <div className="pt-3 text-center">
           <p>
             Already have an account?

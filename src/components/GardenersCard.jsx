@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router";
 
 const GardenersCard = ({ gardeners }) => {
-  const { image, name, otherInfo, experience } = gardeners;
+  const { image, name, otherInfo, experience,_id } = gardeners;
   return (
     <div className="card w-full max-w-sm h-full mx-auto bg-white shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl overflow-hidden border border-gray-100">
       <figure>
@@ -18,9 +19,9 @@ const GardenersCard = ({ gardeners }) => {
         <p className="text-gray-600 text-sm md:text-base">{otherInfo}</p>
         <p>experience :  {experience}</p>
         <div className="card-actions justify-end mt-4">
-          <button className="btn btn-primary rounded-full px-6 hover:scale-105 transition-transform duration-300">
+          <Link to={`/gardenersDetails/${_id}`} className="btn btn-primary rounded-full px-6 hover:scale-105 transition-transform duration-300">
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>

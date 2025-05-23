@@ -11,6 +11,7 @@ import BrowsTips from "../components/BrowsTips";
 import TipDetailsPage from "../pages/TipDetailsPage";
 import Update from "../pages/Update";
 import PrivateRoute from "../context/PrivateRoute";
+import GardenersDetails from "../components/GardenersDetails";
 
 export const router = createBrowserRouter([
   {
@@ -108,6 +109,11 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:'/gardenersDetails/:id',
+        loader:({params})=>fetch(`https://gardening-store-server.vercel.app/gardeners/${params.id}`),
+        Component:GardenersDetails
+      }
     ],
   },
 ]);

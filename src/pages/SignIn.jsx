@@ -37,6 +37,8 @@ const SignIn = () => {
     google()
       .then((result) => {
         console.log(result);
+        toast.success("google singIn successfully")
+        navigate('/')
       })
       .catch((error) => {
         console.log(error.message);
@@ -112,8 +114,7 @@ const SignIn = () => {
             Log In
           </button>
 
-          <Link
-            to="/"
+          <button
             onClick={handleGoogleSignIn}
             className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
           >
@@ -145,7 +146,7 @@ const SignIn = () => {
               </g>
             </svg>
             Login with Google
-          </Link>
+          </button>
         </form>
 
         <p class="mt-6 text-center text-gray-600 text-sm">
