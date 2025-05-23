@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router";
 
 const GardenersDetails = () => {
   const details = useLoaderData();
-  console.log(details)
   return (
     <div className="max-w-6xl mx-auto py-12 min-h-[calc(100vh-117px)] lg:px-0 px-4">
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
