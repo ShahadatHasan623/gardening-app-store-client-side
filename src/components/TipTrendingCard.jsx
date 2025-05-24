@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { FcLike } from "react-icons/fc";
+
 
 // Animation Variants
 const container = {
@@ -61,7 +63,7 @@ const TipTrendingCard = () => {
               </h3>
               <p className="text-gray-600 text-sm mb-4">{tip.description}</p>
               <div className="flex justify-between items-center pt-2 border-t">
-                <span className="text-sm text-gray-700">Like :{tip.totalLike}</span>
+                <span className="text-sm text-gray-700 flex items-center gap-2"><FcLike /> {tip.totalLike}</span>
               </div>
             </motion.div>
           ))}
