@@ -43,7 +43,7 @@ const ShareTip = () => {
       });
   };
   return (
-    <div className="max-w-6xl min-h-[calc(100vh-117px)] mx-auto py-12">
+    <div className="max-w-7xl  mx-auto py-12">
       <div className="p-10 bg-gradient-to-r from-purple-400 to-green-500 rounded-2xl shadow-xl">
         <div className="text-center space-y-2 mb-10">
           <h1 className="text-3xl font-bold text-green-800">Share Your Favorite Gardening Tip!</h1>
@@ -73,7 +73,7 @@ const ShareTip = () => {
               <input
                 type="text"
                 name="plantType"
-                className="input input-bordered w-full"
+                className="input input-bordered bg-cupcake w-full"
                 placeholder="Enter plant type"
               />
             </fieldset>
@@ -178,7 +178,7 @@ const ShareTip = () => {
               <input
                 type="number"
                 name="totalLike"
-                className="w-full"
+                className="input input-bordered w-full"
                 placeholder="Like"
               ></input>
             </fieldset>

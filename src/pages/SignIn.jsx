@@ -55,7 +55,7 @@ const SignIn = () => {
       });
   };
   return (
-    <div className="min-h-[calc(100vh-117px)] flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600 p-4 my-12 rounded-4xl max-w-6xl mx-auto p-12">
+    <div className="min-h-[calc(100vh-117px)] flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600  py-12 rounded-4xl max-w-7xl mx-auto p-12">
       <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Login to Your Account

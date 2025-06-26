@@ -18,6 +18,9 @@ import { useLoaderData } from "react-router";
 import TipTrendingCard from "../components/TipTrendingCard";
 import Landscaping from "./Landscaning";
 import LandscapingCard from "./LandscapingCard";
+import NewsletterSection from "./NewsletterSection";
+import SpecialOffers from "./SpecialOffers";
+import FaqSection from "./FaqSection";
 
 const Home = () => {
   const gardener = useLoaderData();
@@ -179,6 +182,7 @@ const Home = () => {
       <div>
         <LandscapingCard></LandscapingCard>
       </div>
+      <SpecialOffers></SpecialOffers>
       <motion.div
         initial={{ opacity: 0, rotateX: "90deg" }}
         whileInView={{ opacity: 1, rotateX: 0 }}
@@ -186,6 +190,8 @@ const Home = () => {
       >
         <Landscaping></Landscaping>
       </motion.div>
+      <FaqSection></FaqSection>
+      <NewsletterSection></NewsletterSection>
     </div>
   );
 };

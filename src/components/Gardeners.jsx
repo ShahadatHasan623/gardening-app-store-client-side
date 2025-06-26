@@ -26,11 +26,11 @@ const Gardeners = ({ gardener }) => {
       transition={{ duration: 1, type: "spring" }}
       className="w-full py-12  lg:px-0 px-4"
     >
-      <div className="py-12 max-w-6xl mx-auto lg:p-0">
+      <div className="py-12 max-w-7xl mx-auto lg:p-0">
         <div className="text-center space-y-2 mb-10">
           <h1 className="text-4xl font-bold text-green-700">Featured Gardeners</h1>
           <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-          <p className="text-gray-600">
+          <p className="text-cupcake">
             Discover the expertise and passion of our Featured Gardeners,
             showcasing their unique styles, <br /> innovative techniques, and
             love for cultivating beautiful, thriving gardens. Get inspired by
@@ -43,7 +43,7 @@ const Gardeners = ({ gardener }) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-5"
+          className="grid grid-cols-1 lg:grid-cols-4 gap-5"
         >
           {gardener.map((gardeners) => (
             <motion.div key={gardeners._id} variants={item}>
