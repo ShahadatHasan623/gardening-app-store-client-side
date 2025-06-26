@@ -12,6 +12,7 @@ import TipDetailsPage from "../pages/TipDetailsPage";
 import Update from "../pages/Update";
 import PrivateRoute from "../context/PrivateRoute";
 import GardenersDetails from "../components/GardenersDetails";
+import Loading from "../components/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -25,11 +26,7 @@ export const router = createBrowserRouter([
         Component: Home,
         loader: () =>
           fetch("https://gardening-store-server.vercel.app/gardeners"),
-        hydrateFallbackElement: (
-          <div className="flex items-center justify-center">
-            <span className="loading loading-bars loading-xl"></span>
-          </div>
-        ),
+        hydrateFallbackElement: <Loading></Loading>,
       },
       {
         path: "/shareTip",
@@ -42,11 +39,7 @@ export const router = createBrowserRouter([
       {
         path: "/browseTips",
         Component: BrowsTips,
-        hydrateFallbackElement: (
-          <div className="flex items-center justify-center">
-            <span className="loading loading-bars loading-xl"></span>
-          </div>
-        ),
+        hydrateFallbackElement:<Loading></Loading>,
         loader: () => fetch("https://gardening-store-server.vercel.app/garden"),
       },
       {
@@ -61,11 +54,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("https://gardening-store-server.vercel.app/garden"),
-        hydrateFallbackElement: (
-          <div className="flex items-center justify-center">
-            <span className="loading loading-bars loading-xl"></span>
-          </div>
-        ),
+        hydrateFallbackElement:<Loading></Loading>,
       },
       {
         path: "/signIn",
@@ -82,11 +71,7 @@ export const router = createBrowserRouter([
             <TipDetailsPage></TipDetailsPage>
           </PrivateRoute>
         ),
-        hydrateFallbackElement: (
-          <div className="flex items-center justify-center">
-            <span className="loading loading-bars loading-xl"></span>
-          </div>
-        ),
+        hydrateFallbackElement: <Loading></Loading>,
         loader: ({ params }) =>
           fetch(
             `https://gardening-store-server.vercel.app/garden/${params.id}`
@@ -98,11 +83,7 @@ export const router = createBrowserRouter([
           fetch(
             `https://gardening-store-server.vercel.app/garden/${params.id}`
           ),
-        hydrateFallbackElement: (
-          <div className="flex items-center justify-center">
-            <span className="loading loading-bars loading-xl"></span>
-          </div>
-        ),
+        hydrateFallbackElement:<Loading></Loading>,
         element: (
           <PrivateRoute>
             <Update></Update>
