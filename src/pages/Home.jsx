@@ -90,7 +90,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-full">
+      <div className="w-full pt-24 ">
         <Slide {...properties}>
           {images.map((image) => (
             <div className="each-slide-effect" key={image.id}>

@@ -18,7 +18,7 @@ const NewsletterSection = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3000/newsletter", {
+      const res = await axios.post("https://gardening-store-server.vercel.app/newsletter", {
         email,
         subscribedAt: new Date(),
       });
