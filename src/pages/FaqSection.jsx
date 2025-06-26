@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
     question: "How much does a gardening service cost?",
-    answer: "It depends on the size of the garden and the services you require. On average, basic maintenance starts from $50 per session.",
+    answer:
+      "It depends on the size of the garden and the services you require. On average, basic maintenance starts from $50 per session.",
   },
   {
     question: "Do you offer regular maintenance plans?",
@@ -20,6 +22,12 @@ const faqs = [
 ];
 
 const FaqSection = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
     <section className="py-12 bg-white dark:bg-green-950">
       <div className="max-w-4xl mx-auto px-4">
@@ -29,16 +37,28 @@ const FaqSection = () => {
         <div className="space-y-4">
           {faqs.map((item, index) => (
             <div
-              className="collapse collapse-arrow bg-green-100 dark:bg-green-800 rounded-box"
               key={index}
+              className="bg-green-100 dark:bg-green-800 rounded-box p-4 cursor-pointer"
+              onClick={() => toggleFaq(index)}
             >
-              <input type="checkbox" />
-              <div className="collapse-title text-lg font-medium text-green-900 dark:text-white">
+              <div className="text-lg font-medium text-green-900 dark:text-white flex justify-between items-center">
                 {item.question}
+                <span>{openIndex === index ? "▲" : "▼"}</span>
               </div>
-              <div className="collapse-content text-green-800 dark:text-gray-200">
-                <p>{item.answer}</p>
-              </div>
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    key="content"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden text-green-800 dark:text-gray-200 mt-2"
+                  >
+                    <p>{item.answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
