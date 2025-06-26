@@ -90,13 +90,13 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-full pt-24 ">
+      <div className="w-full pt-20">
         <Slide {...properties}>
           {images.map((image) => (
             <div className="each-slide-effect" key={image.id}>
               <div
                 id={image.id}
-                className="w-full h-[100vh] bg-center bg-cover flex items-center justify-center"
+                className="w-full h-[600px] bg-center bg-cover flex items-center justify-center "
                 style={{
                   backgroundImage: `
                   linear-gradient(

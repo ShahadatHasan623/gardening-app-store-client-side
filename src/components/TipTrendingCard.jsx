@@ -40,7 +40,7 @@ const TipTrendingCard = () => {
       viewport={{ once: true }}
       className="py-12"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto lg:px-0 px-4">
         <h2 className="text-4xl font-bold text-center text-green-700 mb-12">
           🌿 Top Trending Gardening Tips
         </h2>

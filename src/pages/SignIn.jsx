@@ -4,6 +4,8 @@ import { AuthContext } from "../context/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import Lottie from "lottie-react";
+import signinAnimatedData from "../../public/singin.json";
 
 const SignIn = () => {
   const { signIn, google, forgotPassword } = use(AuthContext);
@@ -11,52 +13,65 @@ const SignIn = () => {
   const [showpassword, setPassword] = useState(false);
   const location = useLocation();
   const emailRef = useRef();
+
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     signIn(email, password)
       .then((result) => {
         if (result.user) {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your singIn successfully",
+            title: "Your sign in was successful",
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate(location.state ? location.state : "/");
         }
-        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
+
   const handleGoogleSignIn = () => {
     google()
       .then((result) => {
-        console.log(result);
-        toast.success("google singIn successfully")
-        navigate('/')
+        toast.success("Google sign in successful");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
-  const handleForgotPassword= () => {
+
+  const handleForgotPassword = () => {
     const email = emailRef.current.value;
     forgotPassword(email)
       .then(() => {
-        toast.success("Forgote Password Succesfully");
+        toast.success("Password reset email sent!");
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
+
   return (
-    <div className="min-h-[calc(100vh-117px)] flex items-center justify-center bg-gradient-to-r from-blue-400 to-purple-600  py-12 rounded-4xl max-w-7xl mx-auto p-12">
-      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-8">
+    <div className="max-w-7xl mx-auto min-h-[calc(100vh-80px)] flex flex-col lg:flex-row items-center justify-center gap-10 px-6 py-12 pt-30">
+      <div className="w-full lg:w-1/2">
+        <Lottie
+          animationData={signinAnimatedData}
+          loop={true}
+          style={{ height: "400px" }} 
+        />
+      </div>
+
+      {/* Sign In Form */}
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
           Login to Your Account
         </h2>
@@ -64,8 +79,8 @@ const SignIn = () => {
         <form onSubmit={handleSignIn} className="space-y-6">
           <div>
             <label
-              for="email"
-              class="block mb-2 text-sm font-medium text-gray-700"
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-700"
             >
               Email address
             </label>
@@ -82,7 +97,7 @@ const SignIn = () => {
 
           <div className="relative">
             <label
-              for="password"
+              htmlFor="password"
               className="block mb-2 text-sm font-medium text-gray-700"
             >
               Password
@@ -102,8 +117,14 @@ const SignIn = () => {
             >
               {showpassword ? <FaEye /> : <FaEyeSlash />}
             </button>
-            <div>
-              <a onClick={handleForgotPassword} className="link link-hover">Forgot password?</a>
+            <div className="mt-2">
+              <button
+                type="button"
+                onClick={handleForgotPassword}
+                className="text-sm text-blue-600 hover:underline"
+              >
+                Forgot password?
+              </button>
             </div>
           </div>
 
@@ -115,8 +136,9 @@ const SignIn = () => {
           </button>
 
           <button
+            type="button"
             onClick={handleGoogleSignIn}
-            className="btn bg-white text-black border-[#e5e5e5] w-full mt-3"
+            className="btn bg-white text-black border border-gray-300 w-full mt-3"
           >
             <svg
               aria-label="Google logo"
@@ -124,6 +146,7 @@ const SignIn = () => {
               height="16"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 512 512"
+              className="mr-2"
             >
               <g>
                 <path d="m0 0H512V512H0" fill="#fff"></path>
@@ -149,9 +172,9 @@ const SignIn = () => {
           </button>
         </form>
 
-        <p class="mt-6 text-center text-gray-600 text-sm">
+        <p className="mt-6 text-center text-gray-600 text-sm">
           Don't have an account?{" "}
-          <Link to="/signUp" class="text-blue-600 hover:underline">
+          <Link to="/signUp" className="text-blue-600 hover:underline">
             Sign up
           </Link>
         </p>

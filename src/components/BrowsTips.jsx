@@ -14,7 +14,7 @@ const BrowsTips = () => {
   });
 
   return (
-    <div className="overflow-x-auto min-h-[calc(100vh-117px)] py-12 max-w-7xl mx-auto px-4">
+    <div className="overflow-x-auto pt-28 min-h-[calc(100vh-117px)] max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-8 space-y-2">
         <h1 className="text-3xl md:text-4xl font-bold text-green-700">
           Browse Gardening Ideas
