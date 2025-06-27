@@ -16,10 +16,10 @@ const BrowsTips = () => {
   return (
     <div className="overflow-x-auto pt-28 min-h-[calc(100vh-117px)] max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-8 space-y-2">
-        <h1 className="text-3xl md:text-4xl font-bold text-green-700">
+        <h1 className="text-3xl md:text-4xl font-bold text-primary">
           Browse Gardening Ideas
         </h1>
-        <p className="text-cupcake text-sm md:text-base leading-relaxed">
+        <p className="drak:text-white text-gray-600 dark:text-white text-sm md:text-base leading-relaxed">
           Discover a variety of helpful gardening tips to make your green space
           thrive!  Composting, <br /> plant care,  and vertical gardening — expert advice
           for every gardener.

@@ -5,10 +5,13 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary:#008236;
-  --color-secondary:#016630;
 } 
-
+:root{
+  --color-primary:#17a31c;
+  --color-secondary:#A5D6A7;
+  --color-accent :#FFC107;
+}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 body{
  font-family: "Poppins", sans-serif;

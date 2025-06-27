@@ -38,11 +38,11 @@ const TipTrendingCard = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, type: "spring" }}
       viewport={{ once: true }}
-      className="mb-12"
+      className="my-12"
     >
       <div className="max-w-7xl mx-auto lg:px-0 px-4">
-        <h2 className="text-4xl font-bold text-center text-green-700 mb-12">
-          🌿 Top Trending Gardening Tips
+        <h2 className="text-4xl font-bold text-center text-primary mb-12">
+          Top Trending Gardening Tips
         </h2>
 
         <motion.div

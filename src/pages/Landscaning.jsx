@@ -15,10 +15,10 @@ const awards = [
 const Landscaping = () => {
   return (
     <div
-     className="max-w-7xl mx-auto py-12">
+     className="max-w-7xl mx-auto my-12">
       <div className="text-center space-y-2 mb-12">
-        <h1 className="text-4xl font-bold text-green-700">Landscaping Awards</h1>
-        <p className="text-cupcake">
+        <h1 className="text-4xl font-bold text-primary">Landscaping Awards</h1>
+        <p className="text-gray-500 dark:text-white ">
           With so many years of experience in the business, our company <br /> is your
           source for the highest quality and landscaping service.
         </p>

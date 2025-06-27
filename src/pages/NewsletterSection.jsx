@@ -39,16 +39,16 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="py-12 bg-green-100 text-center">
+    <section className="my-12 text-center">
       <motion.h2
-        className="text-3xl font-bold text-green-700"
+        className="text-3xl font-bold text-primary"
         initial={{ scale: 0.8, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        Join Our Garden Club 🌼
+        Join Our Garden Club
       </motion.h2>
-      <p className="mt-4 text-green-700">Get weekly tips & exclusive offers.</p>
+      <p className="mt-4 text-gray-600 dark:text-white">Get weekly tips & exclusive offers.</p>
 
       <form
         onSubmit={handleSubscribe}
@@ -75,7 +75,7 @@ const NewsletterSection = () => {
 
         <button
           type="submit"
-          className="bg-secondary text-white px-6 py-2 rounded-full hover:bg-green-800 transition"
+          className="bg-secondary text-black px-6 py-2 rounded-full hover:bg-green-800 transition hover:text-white"
         >
           Subscribe
         </button>

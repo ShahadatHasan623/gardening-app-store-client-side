@@ -34,8 +34,8 @@ const MyTipCard = ({ users, setUsers }) => {
   return (
     <div className="overflow-x-auto mx-auto px-4">
       <div className="text-center space-y-3 mb-12">
-        <h1 className="lg:text-3xl text-2xl font-bold text-green-700 ">My Gardening Tip – Simple & Effective Ideas</h1>
-        <p>
+        <h1 className="lg:text-3xl text-2xl font-bold text-primary ">My Gardening Tip – Simple & Effective Ideas</h1>
+        <p className="text-gray-600 dark:text-white">
           Discover easy and practical gardening tips from personal experience! <br />
           Learn how to plant, care for,  and protect your garden 
           naturally—perfect <br /> for beginners and home gardeners.

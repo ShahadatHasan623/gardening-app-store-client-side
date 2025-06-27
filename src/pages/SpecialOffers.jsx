@@ -21,9 +21,9 @@ const offers = [
 
 const SpecialOffers = () => {
   return (
-    <section className="py-12 bg-green-50 dark:bg-green-900">
+    <section className="my-12">
       <div className="max-w-7xl mx-auto lg:px-0 px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-green-700 dark:text-white">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-primary dark:text-white">
            Special Offers & Seasonal Packages
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -38,12 +38,12 @@ const SpecialOffers = () => {
               <div className="flex items-center gap-4 mb-4">
                 {item.icon}
                 <div className="text-left">
-                  <h3 className="text-xl font-semibold text-green-800 dark:text-white">{item.title}</h3>
+                  <h3 className="text-xl font-semibold text-primary dark:text-white">{item.title}</h3>
                   <span className="badge badge-error badge-sm text-white mt-1">{item.offer}</span>
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-200 mb-4">{item.desc}</p>
-              <button className="btn btn-success btn-sm">Book Now</button>
+              <button className="btn btn-secondary btn-sm text-black">Book Now</button>
             </motion.div>
           ))}
         </div>

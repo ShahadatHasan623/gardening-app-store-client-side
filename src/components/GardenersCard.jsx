@@ -18,7 +18,7 @@ const GardenersCard = ({ gardeners }) => {
         </h2>
         <p className="text-gray-600 text-sm md:text-base">{otherInfo}</p>
         <div className="card-actions justify-end mt-4">
-          <Link to={`/gardenersDetails/${_id}`} className="btn btn-secondary rounded-full px-6 hover:scale-105 transition-transform duration-300 hover:bg-green-800">
+          <Link to={`/gardenersDetails/${_id}`} className="btn btn-secondary text-black rounded-full px-6 hover:scale-105 transition-transform duration-300 hover:bg-green-800 hover:text-white">
             View Details
           </Link>
         </div>

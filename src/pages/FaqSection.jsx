@@ -29,19 +29,19 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="py-12 bg-white dark:bg-green-950">
+    <section className="my-12">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-green-700 dark:text-white">
+        <h2 className="text-3xl font-bold text-center mb-8 text-primary">
           ❓ Frequently Asked Questions
         </h2>
         <div className="space-y-4">
           {faqs.map((item, index) => (
             <div
               key={index}
-              className="bg-green-100 dark:bg-green-800 rounded-box p-4 cursor-pointer"
+              className="bg-base-200 border-2 dark:bg-green-800 rounded-box p-4 cursor-pointer"
               onClick={() => toggleFaq(index)}
             >
-              <div className="text-lg font-medium text-green-900 dark:text-white flex justify-between items-center">
+              <div className="text-lg font-medium text-primary dark:text-white flex justify-between items-center">
                 {item.question}
                 <span>{openIndex === index ? "▲" : "▼"}</span>
               </div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const LandscapingCard = () => {
   return (
-    <div className="flex max-w-7xl mx-auto flex-col md:flex-row items-center justify-center gap-6 py-12 lg:px-0 px-4">
+    <div className="flex max-w-7xl mx-auto flex-col md:flex-row items-center justify-center gap-6 mt-29 lg:px-0 px-4">
       <motion.div
         initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -45,11 +45,11 @@ const LandscapingCard = () => {
         className="w-full md:w-1/2 text-gray-800 space-y-4 relative z-10"
       >
         <p className="text-sm text-orange-600 font-semibold">Who we are</p>
-        <h2 className="text-2xl font-bold leading-tight text-blue-500">
+        <h2 className="text-2xl font-bold leading-tight text-black dark:text-white">
           Landscaping & Lawn Care Services for Commercial & Residential
           Properties
         </h2>
-        <p className="text-sm text-primary">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           Nulla pede imperdiet ut litora interdum velit dictum libero odio. Leo
           cursus aliquam consectetur dis sociosqu praesent lobortis luctus
           tincidunt ultricies ullamcorper. Risus praesent letius justo congue
@@ -67,7 +67,7 @@ const LandscapingCard = () => {
           </div>
         </div>
 
-        <button className="mt-4 bg-secondary text-white px-6 py-2 rounded-full shadow-md hover:bg-orange-600 transition">
+        <button className="mt-4 text-white px-6 py-2 rounded-full shadow-md bg-primary  hover:bg-green-700 transition">
           Discover more
         </button>
       </motion.div>

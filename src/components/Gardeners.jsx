@@ -28,9 +28,9 @@ const Gardeners = ({ gardener }) => {
     >
       <div className="max-w-7xl mx-auto lg:px-0">
         <div className="text-center space-y-2 mb-10">
-          <h1 className="text-4xl font-bold text-green-700">Featured Gardeners</h1>
+          <h1 className="text-4xl font-bold text-primary">Featured Gardeners</h1>
           <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-          <p className="text-cupcake">
+          <p className="text-gray-600 dark:text-white">
             Discover the expertise and passion of our Featured Gardeners,
             showcasing their unique styles, <br /> innovative techniques, and
             love for cultivating beautiful, thriving gardens. Get inspired by
