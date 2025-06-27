@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "motion/react";
 
 const faqs = [
   {
@@ -45,7 +45,7 @@ const FaqSection = () => {
                 {item.question}
                 <span>{openIndex === index ? "▲" : "▼"}</span>
               </div>
-              <AnimatePresence initial={false}>
+              <motion initial={false}>
                 {openIndex === index && (
                   <motion.div
                     key="content"
@@ -58,7 +58,7 @@ const FaqSection = () => {
                     <p>{item.answer}</p>
                   </motion.div>
                 )}
-              </AnimatePresence>
+              </motion>
             </div>
           ))}
         </div>

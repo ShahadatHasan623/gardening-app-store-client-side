@@ -13,6 +13,10 @@ import Update from "../pages/Update";
 import PrivateRoute from "../context/PrivateRoute";
 import GardenersDetails from "../components/GardenersDetails";
 import Loading from "../components/Loading";
+import DashBoardLayouts from "../layouts/DashBoardLayout/DashBoardLayouts";
+import DashBoardHome from "../layouts/DashBoardLayout/DashBoardHome";
+import DashBoardSubscribe from "../layouts/DashBoardLayout/DashBoardSubscribe";
+import DashBoardProfile from "../layouts/DashBoardLayout/DashBoardProfile";
 
 export const router = createBrowserRouter([
   {
@@ -97,4 +101,23 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path:'/dashboard',
+    element:<PrivateRoute><DashBoardLayouts></DashBoardLayouts></PrivateRoute>,
+    children:[
+      {
+        index:true,
+        Component:DashBoardHome
+      },
+      {
+        path:'subscribe',
+        Component:DashBoardSubscribe,
+        loader :()=>fetch('')
+      },
+      {
+        path:'myprofile',
+        Component:DashBoardProfile
+      }
+    ]
+  }
 ]);

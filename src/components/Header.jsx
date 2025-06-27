@@ -6,6 +6,14 @@ import logoImg from "../assets/logo.png";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import ThemeToggle from "./ThemeToggle";
+import {
+  FaHome,
+  FaLightbulb,
+  FaShareAlt,
+  FaSeedling,
+  FaListUl,
+  FaTachometerAlt,
+} from "react-icons/fa";
 
 const Header = () => {
   const { user, signout } = use(AuthContext);
@@ -18,61 +26,85 @@ const Header = () => {
 
   const links = (
     <>
-      <li className="lg:text-white">
+      <li>
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "btn btn-info rounded-4xl border-none" : ""
+            isActive
+              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
+              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
           }
         >
-          Home
+          <FaHome /> Home
         </NavLink>
       </li>
-      <li className="lg:text-white">
+      <li>
         <NavLink
           to="/browseTips"
           className={({ isActive }) =>
-            isActive ? "btn btn-info rounded-4xl border-none" : ""
+            isActive
+              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
+              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
           }
         >
-          BrowseTips
+          <FaLightbulb /> Browse Tips
         </NavLink>
       </li>
-      <li className="lg:text-white">
+      <li>
         <NavLink
           to="/shareTip"
           className={({ isActive }) =>
-            isActive ? "btn btn-info rounded-4xl border-none" : ""
+            isActive
+              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
+              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
           }
         >
-          Share a Garden Tip
+          <FaShareAlt /> Share a Garden Tip
         </NavLink>
       </li>
-      <li className="lg:text-white">
+      <li>
         <NavLink
           to="/exploreGarden"
           className={({ isActive }) =>
-            isActive ? "btn btn-info rounded-4xl border-none" : ""
+            isActive
+              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
+              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
           }
         >
-          Explore Gardeners
+          <FaSeedling /> Explore Gardeners
         </NavLink>
       </li>
-      <li className="lg:text-white">
+      <li>
         <NavLink
           to="/myTip"
           className={({ isActive }) =>
-            isActive ? "btn btn-info rounded-4xl border-none" : ""
+            isActive
+              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
+              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
           }
         >
-          My Tips
+          <FaListUl /> My Tips
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
+                : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
+            }
+          >
+            <FaTachometerAlt /> Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
   return (
-    <div className="fixed top-0 bottom-0 z-50 w-full bg-[#354e33] navbar shadow-sm px-4 h-20">
+    <div className="fixed top-0 bottom-0 z-50 w-full bg-[#354e33] navbar shadow-sm px-8 h-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="lg:hidden">

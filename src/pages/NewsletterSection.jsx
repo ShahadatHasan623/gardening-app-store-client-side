@@ -10,27 +10,31 @@ const NewsletterSection = () => {
   const [emailInput, setEmailInput] = useState("");
   const email = user?.email || emailInput;
 
-  const handleSubscribe = async (e) => {
+ const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (!email) {
-      toast.error("Please provide an email address.");
+
+    if (!emailInput) {
+      toast.error("Please enter an email address.");
       return;
     }
 
     try {
-      const res = await axios.post("https://gardening-store-server.vercel.app/newsletter", {
+      const response = await axios.post("http://localhost:5000/newsletter", {
         email,
-        subscribedAt: new Date(),
+        subscribedAt: new Date().toISOString(),
       });
 
-      if (res.data.success) {
-        toast.success("Subscribed successfully!");
-        if (!user) setEmailInput("");
-      } else {
-        toast.warn(res.data.message || "Already subscribed");
+      if (response.status === 201) {
+        toast.success("Thanks for subscribing to our newsletter!");
+        setEmailInput(""); // Clear the input field
       }
-    } catch {
-      toast.error("Subscription failed. Try again later.");
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        toast.warning("You are already subscribed!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+        console.error(error);
+      }
     }
   };
 
