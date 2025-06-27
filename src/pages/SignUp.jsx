@@ -84,7 +84,7 @@ const SignUp = () => {
             type="text"
             name="name"
             placeholder="Your full name"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             required
           />
         </div>
@@ -98,7 +98,7 @@ const SignUp = () => {
             type="email"
             name="email"
             placeholder="example@mail.com"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             required
           />
         </div>
@@ -112,7 +112,7 @@ const SignUp = () => {
             type="url"
             name="photoUrl"
             placeholder="Photo URL"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
           />
         </div>
 
@@ -125,13 +125,13 @@ const SignUp = () => {
             type={showpassword ? "text" : "password"}
             name="password"
             placeholder="********"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full px-4 py-3 rounded-lg border text-black border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600"
             required
           />
           <button
             type="button"
             onClick={() => setPassword(!showpassword)}
-            className="absolute top-9 right-0 px-3 py-3"
+            className="absolute top-9 text-black right-0 px-3 py-3"
           >
             {showpassword ? <FaEye /> : <FaEyeSlash />}
           </button>
@@ -167,7 +167,7 @@ const SignUp = () => {
           &nbsp; Sign Up with Google
         </button>
 
-        <div className="pt-4 text-center">
+        <div className="pt-4 text-center text-black">
           <p>
             Already have an account?
             <NavLink to="/signIn" className="text-blue-500 hover:underline ml-1">

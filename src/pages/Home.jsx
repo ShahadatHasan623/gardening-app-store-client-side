@@ -1,7 +1,6 @@
 import {
   CalendarDays,
   Clock10Icon,
-  CreditCard,
   CreditCardIcon,
   Link2Icon,
   MailIcon,
@@ -79,93 +78,96 @@ const Home = () => {
     },
   ];
 
-  const properties = {
-    duration: 3000,
-    transitionDuration: 500,
-    infinite: true,
-    indicators: true,
-    arrows: true,
-    pauseOnHover: true,
-  };
+  const BannerItem = ({ icon, text }) => (
+    <div className="flex items-center gap-2">
+      {icon}
+      <span className="text-sm md:text-base">{text}</span>
+    </div>
+  );
 
   return (
     <div>
       <div className="w-full pt-20">
-        <Slide {...properties}>
+        <Slide
+          duration={1000}
+          transitionDuration={800}
+          infinite={true}
+          indicators={true}
+          arrows={true}
+          pauseOnHover={false}
+        >
           {images.map((image) => (
-            <div className="each-slide-effect" key={image.id}>
+            <div key={image.id} className="each-slide-effect">
               <div
-                id={image.id}
-                className="w-full h-[600px] bg-center bg-cover flex items-center justify-center "
+                className="relative w-full h-[600px] bg-cover bg-center flex items-center justify-center"
                 style={{
-                  backgroundImage: `
-                  linear-gradient(
-                    rgba(0, 0, 0, 0.5),
-                    rgba(0, 0, 0, 0.5)
-                  ),
-                  url(${image.url})
-                `,
+                  backgroundImage: `linear-gradient(
+                  rgba(0, 0, 0, 0.55), 
+                  rgba(0, 0, 0, 0.55)
+                ), url(${image.url})`,
                 }}
               >
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5, duration: 1.5 }}
-                  className="text-white w-3/4 bg-black/50 flex flex-col  justify-center rounded-xl space-y-3 lg:py-10 lg:px-40 p-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.2 }}
+                  className="max-w-5xl bg-black/20 rounded-xl p-6 md:p-10 text-white space-y-4 shadow-xl backdrop-blur-sm"
                 >
-                  <h1 className="lg:text-4xl text-2xl font-semibold">
+                  <h1 className="text-3xl md:text-5xl font-bold">
                     <Typewriter
                       words={image.title}
                       loop={false}
                       cursor
                       cursorStyle="|"
-                      typeSpeed={80}
-                      deleteSpeed={50}
+                      typeSpeed={70}
+                      deleteSpeed={40}
                       delaySpeed={2000}
                     />
                   </h1>
-                  <div className="flex items-center gap-2">
-                    <CalendarDays className="text-red-200" />
-                    <p>{image.date}</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <BannerItem
+                      icon={<CalendarDays className="text-green-300" />}
+                      text={image.date}
+                    />
+                    <BannerItem
+                      icon={<Clock10Icon className="text-yellow-300" />}
+                      text={image.time}
+                    />
+                    <BannerItem
+                      icon={<MapPinPlus className="text-red-300" />}
+                      text={image.location}
+                    />
+                    <BannerItem
+                      icon={<Users2Icon className="text-blue-300" />}
+                      text={image.speakers.join(", ")}
+                    />
+                    <BannerItem
+                      icon={<CreditCardIcon className="text-amber-300" />}
+                      text={image.registrationFee}
+                    />
+                    <BannerItem
+                      icon={<MailIcon className="text-sky-300" />}
+                      text={image.contactEmail}
+                    />
+                    <BannerItem
+                      icon={<Link2Icon className="text-pink-300" />}
+                      text={image.website}
+                    />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock10Icon className="text-red-500" />
-                    <p>{image.time}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPinPlus className="text-red-800" />
-                    <p>{image.location}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Users2Icon className="text-blue-500" />
-                    <p>
-                      {image.speakers[1]} <br /> {image.speakers[2]}
-                    </p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CreditCard className="text-amber-300" />
-                    <p>{image.registrationFee}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MailIcon className="text-blue-500" />
-                    <p>{image.contactEmail}</p>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Link2Icon className="text-red-800" />
-                    <p>{image.website}</p>
-                  </div>
-                  <div>
-                    <motion.button
-                      className="py-2 px-8 lg:px-15  border-2 rounded-4xl text-xl"
-                      whileHover={{
-                        scale: 1.1,
-                        textShadow: "0px 0px 8px rgb(255,255,255)",
-                        boxShadow: "0px 0px 8px rgb(255,255,255)",
-                      }}
-                    >
-                      <a href={image.website}>event</a>
-                    </motion.button>
-                  </div>
+
+                  <motion.a
+                    href={image.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 0 12px rgba(255, 255, 255, 0.5)",
+                    }}
+                    className="inline-block mt-6 px-6 py-2 bg-green-600 hover:bg-green-700 transition text-white font-semibold rounded-full"
+                  >
+                    Visit Event Website
+                  </motion.a>
                 </motion.div>
               </div>
             </div>

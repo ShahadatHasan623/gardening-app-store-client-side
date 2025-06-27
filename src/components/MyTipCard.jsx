@@ -73,7 +73,7 @@ const MyTipCard = ({ users, setUsers }) => {
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-2">
                       <Link
-                        to={`/update/${user._id}`}
+                        to={`/dashboard/update/${user._id}`}
                         className="btn btn-sm bg-green-500 text-white hover:bg-green-600"
                       >
                         <FaEdit className="text-lg" />

@@ -52,18 +52,6 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          to="/shareTip"
-          className={({ isActive }) =>
-            isActive
-              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
-              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
-          }
-        >
-          <FaShareAlt /> Share a Garden Tip
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
           to="/exploreGarden"
           className={({ isActive }) =>
             isActive
@@ -72,18 +60,6 @@ const Header = () => {
           }
         >
           <FaSeedling /> Explore Gardeners
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/myTip"
-          className={({ isActive }) =>
-            isActive
-              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
-              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
-          }
-        >
-          <FaListUl /> My Tips
         </NavLink>
       </li>
       {user && (

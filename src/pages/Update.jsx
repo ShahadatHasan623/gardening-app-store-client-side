@@ -43,7 +43,7 @@ const Update = () => {
       });
   };
   return (
-    <div className="max-w-7xl min-h-[calc(100vh-117px)] mx-auto py-12 pt-30">
+    <div className="max-w-7xl min-h-[calc(100vh-117px)] mx-auto py-12">
       <div className="p-10 bg-gradient-to-r from-purple-400 to-green-500 rounded-2xl shadow-xl">
         <div className="text-center space-y-2 mb-10">
           <h1 className="text-3xl font-bold text-green-800">

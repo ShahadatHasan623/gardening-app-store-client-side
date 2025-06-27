@@ -89,7 +89,7 @@ const SignIn = () => {
               ref={emailRef}
               id="email"
               name="email"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
               placeholder="you@example.com"
               required
             />
@@ -106,8 +106,8 @@ const SignIn = () => {
               type={showpassword ? "text" : "password"}
               id="password"
               name="password"
-              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your password"
+              className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="Enter your password "
               required
             />
             <button

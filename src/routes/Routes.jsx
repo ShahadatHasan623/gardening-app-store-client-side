@@ -15,7 +15,6 @@ import GardenersDetails from "../components/GardenersDetails";
 import Loading from "../components/Loading";
 import DashBoardLayouts from "../layouts/DashBoardLayout/DashBoardLayouts";
 import DashBoardHome from "../layouts/DashBoardLayout/DashBoardHome";
-import DashBoardSubscribe from "../layouts/DashBoardLayout/DashBoardSubscribe";
 import DashBoardProfile from "../layouts/DashBoardLayout/DashBoardProfile";
 
 export const router = createBrowserRouter([
@@ -33,32 +32,14 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loading></Loading>,
       },
       {
-        path: "/shareTip",
-        element: (
-          <PrivateRoute>
-            <ShareTip></ShareTip>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/browseTips",
         Component: BrowsTips,
-        hydrateFallbackElement:<Loading></Loading>,
+        hydrateFallbackElement: <Loading></Loading>,
         loader: () => fetch("https://gardening-store-server.vercel.app/garden"),
       },
       {
         path: "/exploreGarden",
         Component: ExploreGarden,
-      },
-      {
-        path: "/myTip",
-        element: (
-          <PrivateRoute>
-            <MyTip></MyTip>
-          </PrivateRoute>
-        ),
-        loader: () => fetch("https://gardening-store-server.vercel.app/garden"),
-        hydrateFallbackElement:<Loading></Loading>,
       },
       {
         path: "/signIn",
@@ -82,42 +63,58 @@ export const router = createBrowserRouter([
           ),
       },
       {
-        path: "/update/:id",
+        path: "/gardenersDetails/:id",
         loader: ({ params }) =>
           fetch(
-            `https://gardening-store-server.vercel.app/garden/${params.id}`
+            `https://gardening-store-server.vercel.app/gardeners/${params.id}`
           ),
-        hydrateFallbackElement:<Loading></Loading>,
+        Component: GardenersDetails,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashBoardLayouts></DashBoardLayouts>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        Component: DashBoardHome,
+      },
+      {
+        path: "myprofile",
+        Component: DashBoardProfile,
+      },
+      {
+        path: "shareTip",
         element: (
           <PrivateRoute>
-            <Update></Update>
+            <ShareTip></ShareTip>
           </PrivateRoute>
         ),
       },
       {
-        path:'/gardenersDetails/:id',
-        loader:({params})=>fetch(`https://gardening-store-server.vercel.app/gardeners/${params.id}`),
-        Component:GardenersDetails
-      }
+        path: "myTip",
+        element: (
+          <PrivateRoute>
+            <MyTip></MyTip>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://gardening-store-server.vercel.app/garden"),
+        hydrateFallbackElement: <Loading></Loading>,
+      },
+      {
+        path: "update/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://gardening-store-server.vercel.app/garden/${params.id}`
+          ),
+        hydrateFallbackElement: <Loading></Loading>,
+        element: <Update></Update>,
+      },
     ],
   },
-  {
-    path:'/dashboard',
-    element:<PrivateRoute><DashBoardLayouts></DashBoardLayouts></PrivateRoute>,
-    children:[
-      {
-        index:true,
-        Component:DashBoardHome
-      },
-      {
-        path:'subscribe',
-        Component:DashBoardSubscribe,
-        loader :()=>fetch('')
-      },
-      {
-        path:'myprofile',
-        Component:DashBoardProfile
-      }
-    ]
-  }
 ]);

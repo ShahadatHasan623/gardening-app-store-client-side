@@ -1,7 +1,7 @@
 import React, { use } from "react";
 import { Outlet, NavLink } from "react-router";
 import gardeningLogo from "../../assets/logo.png";
-import { FaHome, FaUser, FaCrown } from "react-icons/fa";
+import { FaHome, FaListUl, FaShareAlt, FaUser } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../context/AuthContext";
@@ -93,7 +93,6 @@ const DashBoardLayouts = () => {
             />
             <h1 className="text-2xl font-bold text-green-700">Dashboard</h1>
           </NavLink>
-
           {/* Sidebar Links with Icons */}
           <li>
             <NavLink
@@ -105,6 +104,30 @@ const DashBoardLayouts = () => {
               }
             >
               <FaHome /> Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/shareTip"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center gap-2 bg-green-200 text-green-900 font-semibold rounded-lg px-3 py-2"
+                  : "flex items-center gap-2 hover:bg-green-100 rounded-lg px-3 py-2"
+              }
+            >
+              <FaShareAlt /> Share a Garden Tip
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/myTip"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex items-center gap-2 bg-green-200 text-green-900 font-semibold rounded-lg px-3 py-2"
+                  : "flex items-center gap-2 hover:bg-green-100 rounded-lg px-3 py-2"
+              }
+            >
+              <FaListUl /> My Tips
             </NavLink>
           </li>
           <li>
