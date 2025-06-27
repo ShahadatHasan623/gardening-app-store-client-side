@@ -89,8 +89,8 @@ const Home = () => {
     <div>
       <div className="w-full pt-20">
         <Slide
-          duration={1000}
-          transitionDuration={800}
+          duration={10}
+          transitionDuration={200}
           infinite={true}
           indicators={true}
           arrows={true}

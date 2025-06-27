@@ -24,9 +24,9 @@ const Gardeners = ({ gardener }) => {
       initial={{ opacity: 0, translateX: "-100%" }}
       whileInView={{ opacity: 1, translateX: 0 }}
       transition={{ duration: 1, type: "spring" }}
-      className="w-full py-12  lg:px-0 px-4"
+      className="w-full my-12  lg:px-0 px-4"
     >
-      <div className="py-12 max-w-7xl mx-auto lg:px-0">
+      <div className="max-w-7xl mx-auto lg:px-0">
         <div className="text-center space-y-2 mb-10">
           <h1 className="text-4xl font-bold text-green-700">Featured Gardeners</h1>
           <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
