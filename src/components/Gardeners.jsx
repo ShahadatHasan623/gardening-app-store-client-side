@@ -2,57 +2,81 @@ import React from "react";
 import GardenersCard from "./GardenersCard";
 import { motion } from "framer-motion";
 
-
-const container = {
+// Stagger Animation Variants for Grid Items
+const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 },
+const itemVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { type: "spring", stiffness: 100, damping: 15 }
+  },
 };
 
-const Gardeners = ({ gardener }) => {
+const Gardeners = ({ gardener = [] }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, translateX: "-100%" }}
-      whileInView={{ opacity: 1, translateX: 0 }}
-      transition={{ duration: 1, type: "spring" }}
-      className="w-full my-12  lg:px-0 px-4"
-    >
-      <div className="max-w-7xl mx-auto lg:px-0">
-        <div className="text-center space-y-2 mb-10">
-          <h1 className="text-4xl font-bold text-primary">Featured Gardeners</h1>
-          <div className="w-24 h-1 bg-green-500 mx-auto rounded-full"></div>
-          <p className="text-gray-600 dark:text-white">
-            Discover the expertise and passion of our Featured Gardeners,
-            showcasing their unique styles, <br /> innovative techniques, and
-            love for cultivating beautiful, thriving gardens. Get inspired by
-            their tips <br />
-            and stories to create your own green paradise.
+    <section className="relative w-full py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-transparent via-emerald-50/20 to-transparent dark:via-zinc-950/30 overflow-hidden">
+      
+      {/* Background Ambient Glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-400/10 dark:bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            🌿 Expert Creators
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-950 dark:text-gray-50">
+            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300">Gardeners</span>
+          </h1>
+          
+          <div className="w-16 h-1.5 bg-gradient-to-r from-emerald-500 to-teal-400 mx-auto rounded-full"></div>
+          
+          <p className="text-base md:text-lg text-gray-600 dark:text-zinc-400 font-medium leading-relaxed max-w-2xl mx-auto pt-2">
+            Discover the expertise and passion of our Featured Gardeners, showcasing their unique styles, innovative techniques, and love for cultivating beautiful, thriving gardens.
           </p>
-        </div>
+        </motion.div>
+
+        {/* Grid Items with Smooth Scroll Stagger */}
         <motion.div
-          variants={container}
+          variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-4 gap-5"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
         >
-          {gardener.map((gardeners) => (
-            <motion.div key={gardeners._id} variants={item}>
-              <GardenersCard gardeners={gardeners} />
+          {gardener.map((singleGardener) => (
+            <motion.div 
+              key={singleGardener._id} 
+              variants={itemVariants}
+              className="h-full"
+            >
+              <GardenersCard gardeners={singleGardener} />
             </motion.div>
           ))}
         </motion.div>
+        
       </div>
-    </motion.div>
+    </section>
   );
 };
 
