@@ -26,7 +26,7 @@ const itemVariants = {
 
 const Gardeners = ({ gardener = [] }) => {
   return (
-    <section className="relative w-full py-20 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-transparent via-emerald-50/20 to-transparent dark:via-zinc-950/30 overflow-hidden">
+    <section className="relative w-full my-16 py-2 px-4 md:px-6 lg:px-8 bg-gradient-to-b from-transparent via-emerald-50/20 to-transparent dark:via-zinc-950/30 overflow-hidden">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-400/10 dark:bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none -z-10" />
