@@ -1,5 +1,5 @@
-import React, { use, useRef, useState } from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router";
+import React, { useContext, useRef, useState } from "react"; 
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -8,7 +8,8 @@ import Lottie from "lottie-react";
 import signinAnimatedData from "../../public/singin.json";
 
 const SignIn = () => {
-  const { signIn, google, forgotPassword } = use(AuthContext);
+  //useContext
+  const { signIn, google, forgotPassword } = useContext(AuthContext); 
   const navigate = useNavigate();
   const [showpassword, setPassword] = useState(false);
   const location = useLocation();
@@ -22,7 +23,7 @@ const SignIn = () => {
 
     signIn(email, password)
       .then((result) => {
-        if (result.user) {
+        if (result?.user) {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -34,7 +35,8 @@ const SignIn = () => {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        console.error(error.message);
+        toast.error(error.message); 
       });
   };
 
@@ -45,18 +47,26 @@ const SignIn = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error.message);
+        console.error(error.message);
+        toast.error(error.message);
       });
   };
 
   const handleForgotPassword = () => {
     const email = emailRef.current.value;
+    
+    if (!email) {
+      toast.error("Please provide a valid email address first.");
+      return;
+    }
+
     forgotPassword(email)
       .then(() => {
         toast.success("Password reset email sent!");
       })
       .catch((error) => {
-        console.log(error.message);
+        console.error(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -138,7 +148,7 @@ const SignIn = () => {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="btn bg-white text-black border border-gray-300 w-full mt-3"
+            className="btn bg-white text-black border border-gray-300 w-full mt-3 flex items-center justify-center"
           >
             <svg
               aria-label="Google logo"

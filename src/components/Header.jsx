@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
 import "../index.css";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion"; // Clean path format
 import { NavLink } from "react-router";
 import logoImg from "../assets/logo.png";
 import { AuthContext } from "../context/AuthContext";
@@ -9,171 +9,225 @@ import ThemeToggle from "./ThemeToggle";
 import {
   FaHome,
   FaLightbulb,
-  FaShareAlt,
   FaSeedling,
-  FaListUl,
   FaTachometerAlt,
+  FaBars,
+  FaTimes,
+  FaSignOutAlt
 } from "react-icons/fa";
 
 const Header = () => {
   const { user, signout } = use(AuthContext);
   const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSignOut = () => {
+    setOpen(false);
     signout();
-    toast.success("Signout successfully");
+    toast.success("Signed out successfully");
   };
 
-  const links = (
+  // <li> tags wrapped inside clean JSX structure
+  const renderLinks = () => (
     <>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
+      <NavLink
+        to="/"
+        onClick={() => setMobileMenuOpen(false)}
+        className={({ isActive }) =>
+          `flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
             isActive
-              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
-              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
-          }
-        >
-          <FaHome /> Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/browseTips"
-          className={({ isActive }) =>
+              ? "bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-md shadow-emerald-950/40"
+              : "text-slate-200 hover:bg-emerald-800/40 hover:text-white"
+          }`
+        }
+      >
+        <FaHome className="text-base" /> Home
+      </NavLink>
+
+      <NavLink
+        to="/browseTips"
+        onClick={() => setMobileMenuOpen(false)}
+        className={({ isActive }) =>
+          `flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
             isActive
-              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
-              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
-          }
-        >
-          <FaLightbulb /> Browse Tips
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/exploreGarden"
-          className={({ isActive }) =>
+              ? "bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-md shadow-emerald-950/40"
+              : "text-slate-200 hover:bg-emerald-800/40 hover:text-white"
+          }`
+        }
+      >
+        <FaLightbulb className="text-base" /> Browse Tips
+      </NavLink>
+
+      <NavLink
+        to="/exploreGarden"
+        onClick={() => setMobileMenuOpen(false)}
+        className={({ isActive }) =>
+          `flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
             isActive
-              ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
-              : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
-          }
-        >
-          <FaSeedling /> Explore Gardeners
-        </NavLink>
-      </li>
+              ? "bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-md shadow-emerald-950/40"
+              : "text-slate-200 hover:bg-emerald-800/40 hover:text-white"
+          }`
+        }
+      >
+        <FaSeedling className="text-base" /> Explore Gardeners
+      </NavLink>
+
       {user && (
-        <li>
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
+        <NavLink
+          to="/dashboard"
+          onClick={() => setMobileMenuOpen(false)}
+          className={({ isActive }) =>
+            `flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
               isActive
-                ? "flex items-center gap-2 px-3 py-2 rounded-xl bg-[#6dbb5a] text-white font-semibold shadow"
-                : "flex items-center gap-2 px-3 py-2 rounded-xl text-white hover:bg-[#416b3a] transition"
-            }
-          >
-            <FaTachometerAlt /> Dashboard
-          </NavLink>
-        </li>
+                ? "bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-md shadow-emerald-950/40"
+                : "text-slate-200 hover:bg-emerald-800/40 hover:text-white"
+          }`
+        }
+        >
+          <FaTachometerAlt className="text-base" /> Dashboard
+        </NavLink>
       )}
     </>
   );
 
   return (
-    <div className="fixed top-0 bottom-0 z-50 w-full bg-[#354e33] navbar shadow-sm px-8 h-20">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content rounded-box z-10 mt-3 w-52 p-2 shadow bg-base-100"
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#1f351e]/85 backdrop-blur-md border-b border-emerald-800/30 shadow-lg h-20 flex items-center px-4 sm:px-8">
+      <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
+        
+        {/* LEFT: LOGO & MOBILE HAMBURGER */}
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+            className="lg:hidden text-white p-2 hover:bg-emerald-800/50 rounded-xl transition-all"
+            aria-label="Toggle Menu"
           >
-            {links}
-          </ul>
+            {mobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+          </button>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2"
+          >
+            <img className="h-12 w-auto object-contain sm:h-14" src={logoImg} alt="GreenNest Logo" />
+            <h1 className="text-xl sm:text-2xl font-black bg-gradient-to-r from-green-300 via-emerald-400 to-teal-200 bg-clip-text text-transparent tracking-tight hidden xs:block">
+              GreenNest
+            </h1>
+          </motion.div>
         </div>
-        <motion.div
-          initial={{ y: -250 }}
-          animate={{ y: -10 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
-          className="flex items-center gap-1"
-        >
-          <img className="h-16" src={logoImg} alt="Logo" />
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 via-green-200 to-green-500 bg-clip-text text-transparent lg:block hidden">
-            GreenNest
-          </h1>
-        </motion.div>
-      </div>
 
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div>
+        {/* CENTER: DESKTOP NAV LINKS */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {renderLinks()}
+        </nav>
 
-      <div className="navbar-end flex items-center gap-2">
-        <ThemeToggle />
-        {user ? (
-          <div className="relative inline-block text-left">
-            <div onClick={() => setOpen(!open)} className="cursor-pointer">
-              <img
-                className="w-12 h-12 rounded-full border-2 border-gray-300"
-                src={user?.photoURL}
-                alt="Profile"
-              />
+        {/* RIGHT: THEME & AUTH ACTIONS */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          
+          {user ? (
+            <div className="relative">
+              <button
+                onClick={() => setOpen(!open)}
+                className="flex items-center p-0.5 rounded-full border-2 border-emerald-500/60 hover:border-emerald-400 transition-all focus:outline-none z-50 relative"
+              >
+                <img
+                  className="w-10 h-10 rounded-full object-cover shadow"
+                  src={user?.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde"}
+                  alt="Profile"
+                />
+              </button>
+
+              {/* Fixed User Dropdown Profile Menu */}
+              <AnimatePresence>
+                {open && (
+                  <>
+                    {/* Background Overlay layer to capture close event trigger */}
+                    <div className="fixed inset-0 z-40 bg-transparent" onClick={() => setOpen(false)} />
+                    
+                    <motion.div
+                      initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                      transition={{ duration: 0.15 }}
+                      className="absolute right-0 mt-3 w-64 rounded-2xl shadow-2xl bg-slate-900 border border-slate-800/80 text-slate-100 z-50 overflow-hidden"
+                    >
+                      <div className="px-4 py-4 bg-gradient-to-b from-emerald-950/40 to-slate-900 border-b border-slate-800/60 flex flex-col items-center text-center">
+                        <img
+                          className="w-14 h-14 rounded-full border-2 border-emerald-500 object-cover mb-2"
+                          src={user?.photoURL}
+                          alt="Avatar"
+                        />
+                        <p className="font-semibold text-white truncate w-full px-2">{user.displayName}</p>
+                        <p className="text-xs text-slate-400 truncate w-full px-2 mt-0.5">{user.email}</p>
+                      </div>
+                      <div className="p-2">
+                        <button
+                          onClick={handleSignOut}
+                          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-rose-500/10 hover:bg-rose-600 text-sm font-semibold text-rose-400 hover:text-white rounded-xl transition duration-200"
+                        >
+                          <FaSignOutAlt /> Sign Out
+                        </button>
+                      </div>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
             </div>
-
-            {open && (
-              <div className="absolute right-0 mt-2 w-80 rounded-lg shadow-lg bg-white z-50">
-                <div className="px-4 py-3 border-b flex flex-col items-center">
-                  <p className="font-medium text-gray-800">
-                    {user.displayName}
-                  </p>
-                  <p className="text-sm text-gray-500">{user.email}</p>
-                </div>
-                <div className="p-2">
-                  <button
-                    onClick={handleSignOut}
-                    className="w-full px-4 py-2 btn bg-gray-300 text-sm text-red-600 hover:bg-gray-100 rounded"
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="flex gap-2">
-            <NavLink
-              to="/signIn"
-              className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
-             transition transform hover:scale-110 hover:shadow-[0_0_5px_rgba(255,255,255,1)]"
-            >
-              Sign In
-            </NavLink>
-            <NavLink
-              to="/signUp"
-              className="px-5 py-2 text-white font-semibold border-2 border-white rounded-2xl 
-             transition transform hover:scale-110 hover:shadow-[0_0_5px_rgba(255,255,255,1)]"
-            >
-              Sign Up
-            </NavLink>
-          </div>
-        )}
+          ) : (
+            <div className="flex items-center gap-2">
+              <NavLink
+                to="/signIn"
+                className="hidden sm:inline-block px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800/40 rounded-xl transition"
+              >
+                Sign In
+              </NavLink>
+              <NavLink
+                to="/signUp"
+                className="px-4 py-2 text-sm font-bold text-slate-950 bg-gradient-to-r from-green-300 to-emerald-400 rounded-xl shadow hover:from-green-400 hover:to-emerald-500 transition duration-300"
+              >
+                Sign Up
+              </NavLink>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+
+      {/* MOBILE DRAWER (SLIDEOUT SIDEBAR) */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+              className="fixed inset-0 top-20 bg-black/60 backdrop-blur-xs z-60 lg:hidden"
+            />
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "tween", duration: 0.25 }}
+              className="fixed top-20 bottom-0 left-0 w-64 bg-[#142613] border-r border-emerald-900/30 p-4 z-50 lg:hidden h-64 shadow-2xl flex flex-col gap-3"
+            >
+              {renderLinks()}
+              {!user && (
+                <div className="mt-2 pt-4 border-t border-emerald-900/40 flex flex-col gap-2 sm:hidden">
+                  <NavLink
+                    to="/signIn"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full text-center py-2 text-sm font-medium text-white rounded-xl border border-emerald-700/60"
+                  >
+                    Sign In
+                  </NavLink>
+                </div>
+              )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 
